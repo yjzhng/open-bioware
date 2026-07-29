@@ -4,7 +4,7 @@ Website for **Open Bioware** — the home page for the open-source desktop
 applications we build, plus a directory of other open-source scientific software
 worth knowing about.
 
-Live at <https://open-bioware.github.io>.
+Live at <https://yjzhng.github.io/open-bioware.github.io/>.
 
 ---
 
@@ -235,7 +235,7 @@ Nothing that a reader sees is written in the template code. Four files in
 
 | File | What it holds |
 | --- | --- |
-| [`site.json`](data/site.json) | Identity and configuration: name, URL, nav items, and the outbound links — `github` (profile, used by the navbar), `website` (personal site, linked from About) and `siteRepo` (`owner/name` of this repository, used by the footer source link and every "open an issue" link). Its `tagline` and `description` are the site-wide `<title>` and meta description defaults. |
+| [`site.json`](data/site.json) | Identity and configuration: name, URL, nav items, and the outbound links — `github` (profile, used by the navbar), `website` (personal site, linked from About) and `siteRepo` (`owner/name` of this repository, used by the footer source link and every "open an issue" link), and `basePath`. Its `tagline` and `description` are the site-wide `<title>` and meta description defaults. |
 | [`content.json`](data/content.json) | Every page's prose — starting with the home page headline and intro, then headings, ledes, the whole About page, button labels, empty states, 404 |
 | [`apps.json`](data/apps.json) | Your applications |
 | [`directory.json`](data/directory.json) | The third-party list |
@@ -264,6 +264,23 @@ editable without touching markup:
 ```
 
 Add a block type by extending `contentBlocks()` in `src/render.mjs`.
+
+## Base path
+
+GitHub Pages serves a repo at the domain root only when the repo is named
+`<owner>.github.io`. This one is `open-bioware.github.io` under the owner
+`yjzhng`, so it is a *project* site served from a subpath, and `site.json` sets:
+
+```jsonc
+"url":      "https://yjzhng.github.io/open-bioware.github.io",
+"basePath": "/open-bioware.github.io"
+```
+
+Every internal URL the generator emits is passed through one `u()` helper that
+applies this prefix, so there is no way to add a link that forgets it. Set
+`basePath` to `""` if the site ever moves to the domain root (its own
+`open-bioware` account, or a custom domain) and drop the subpath from `url`;
+nothing else needs to change.
 
 ## Working on the site
 

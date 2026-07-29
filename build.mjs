@@ -23,6 +23,7 @@ import {
   renderAbout,
   render404,
   downloadUrl,
+  setBasePath,
   ACCENTS,
 } from "./src/render.mjs";
 
@@ -126,6 +127,9 @@ async function main() {
   // Page prose lives in data/content.json; templates read it from here so the
   // render functions need no extra parameter threaded through every call.
   site.content = content;
+
+  // Everything internal is emitted through this prefix; empty means domain root.
+  setBasePath(site.basePath || "");
 
   // Content-hash the stylesheet and script so a deploy cannot leave visitors
   // on a cached copy of either. Unchanged files keep their hash, and stay

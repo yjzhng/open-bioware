@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://open-bioware.github.io/sitemap.xml
+Sitemap: https://yjzhng.github.io/open-bioware.github.io/sitemap.xml

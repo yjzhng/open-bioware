@@ -317,14 +317,19 @@
   // through history lets the browser restore the scroll position (and, via
   // bfcache, the rest of that page's state). Landing directly on an app page —
   // from a search result or a shared link — falls through to the plain href.
+  // The site may be served from a subpath, so compare against the base that the
+  // back link itself carries rather than assuming the domain root.
   var backLink = document.querySelector(".back-link");
+  var base = backLink
+    ? (backLink.getAttribute("href") || "/").replace(/\/$/, "")
+    : "";
   if (backLink && window.history.length > 1 && document.referrer) {
     var from = null;
     try { from = new URL(document.referrer); } catch (e) {}
     var cameFromSite =
       from &&
       from.origin === window.location.origin &&
-      (from.pathname === "/" || from.pathname === "/apps/");
+      (from.pathname === base + "/" || from.pathname === base + "/apps/");
 
     if (cameFromSite) {
       backLink.addEventListener("click", function (event) {

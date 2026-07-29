@@ -21,6 +21,17 @@ export const esc = (v = "") =>
 
 const attr = (v) => esc(v);
 
+/**
+ * Base path the site is served from. GitHub Pages serves a repo whose name does
+ * not match its owner from a subpath, so every internal URL must carry it.
+ * Empty string when the site sits at the domain root.
+ */
+let BASE = "";
+export const setBasePath = (base) => { BASE = (base || "").replace(/\/$/, ""); };
+
+/** Prefix a root-relative path with the base path; leaves other URLs alone. */
+const u = (path = "") => (path.startsWith("/") ? BASE + path : path);
+
 /** Fill {tokens} in a content string: t("Search {count}", {count: 11}). */
 const t = (str = "", vars = {}) =>
   String(str).replace(/\{(\w+)\}/g, (m, key) => (key in vars ? String(vars[key]) : m));
@@ -95,8 +106,8 @@ const head = (site, page) => {
     `<meta name="twitter:card" content="summary_large_image">`,
     `<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">`,
     `<meta name="theme-color" content="#0b0f12" media="(prefers-color-scheme: dark)">`,
-    `<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">`,
-    `<link rel="stylesheet" href="/assets/css/site.css${site.assets ? `?v=${site.assets.css}` : ""}">`,
+    `<link rel="icon" href="${u("/assets/img/favicon.svg")}" type="image/svg+xml">`,
+    `<link rel="stylesheet" href="${u("/assets/css/site.css")}${site.assets ? `?v=${site.assets.css}` : ""}">`,
     // Apply a stored theme before first paint so it never flashes.
     `<script>(function(){try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}})()</script>`,
     page.jsonLd ? `<script type="application/ld+json">${JSON.stringify(page.jsonLd)}</script>` : "",
@@ -123,12 +134,12 @@ const navMenu = (kind, apps, directory) => {
 
   const entry = (item, groupIndex) =>
     isApps
-      ? `<li><a href="/apps/${attr(item.slug)}/">${appTile(item, "tile--xs")}${esc(item.name)}</a></li>`
+      ? `<li><a href="${u(`/apps/${attr(item.slug)}/`)}">${appTile(item, "tile--xs")}${esc(item.name)}</a></li>`
       : `<li><a href="${attr(item.site || `https://github.com/${item.repo}`)}" rel="noopener nofollow">${brandTile(item, { accent: categoryAccent(groupIndex), extraClass: "tile--xs" })}${esc(item.name)}</a></li>`;
 
   const foot = isApps
-    ? `<a href="/apps/">All ${apps.length} application${apps.length === 1 ? "" : "s"} ${icons.arrow(14)}</a>`
-    : `<a href="/software/">Full directory ${icons.arrow(14)}</a>`;
+    ? `<a href="${u("/apps/")}">All ${apps.length} application${apps.length === 1 ? "" : "s"} ${icons.arrow(14)}</a>`
+    : `<a href="${u("/software/")}">Full directory ${icons.arrow(14)}</a>`;
 
   return `
         <div class="mega ${isApps ? "mega--apps" : "mega--directory"}">
@@ -139,7 +150,7 @@ const navMenu = (kind, apps, directory) => {
               <p class="mega__heading">${
                 isApps
                   ? esc(g.category)
-                  : `<a href="/software/#${attr(slugify(g.category))}">${esc(g.category)}</a>`
+                  : `<a href="${u(`/software/#${attr(slugify(g.category))}`)}">${esc(g.category)}</a>`
               }</p>
               <ul>
                 ${g.items.map((it) => entry(it, gi)).join("\n                ")}
@@ -161,7 +172,7 @@ const siteHeader = (site, current, apps, directory) => `
           .map((n) => {
             const menu = n.menu ? navMenu(n.menu, apps, directory) : "";
             return `<li class="${menu ? "has-menu" : ""}">
-          <a href="${attr(n.href)}"${current && n.href === current ? ' aria-current="page"' : ""}>${esc(n.label)}${menu ? icons.caret() : ""}</a>${menu}
+          <a href="${attr(u(n.href))}"${current && n.href === current ? ' aria-current="page"' : ""}>${esc(n.label)}${menu ? icons.caret() : ""}</a>${menu}
         </li>`;
           })
           .join("\n        ")}
@@ -181,7 +192,7 @@ const siteFooter = (site, apps) => {
   <div class="wrap">
     <div class="site-footer__grid">
       <div>
-        <a class="brand" href="/">${icons.logo(20)}<span>${esc(site.name)}</span></a>
+        <a class="brand" href="${u("/")}">${icons.logo(20)}<span>${esc(site.name)}</span></a>
         <p class="site-footer__about">${esc(site.description)}</p>
       </div>
       <div>
@@ -189,16 +200,16 @@ const siteFooter = (site, apps) => {
         <ul>
           ${apps
             .slice(0, 6)
-            .map((a) => `<li><a href="/apps/${attr(a.slug)}/">${esc(a.name)}</a></li>`)
+            .map((a) => `<li><a href="${u(`/apps/${attr(a.slug)}/`)}">${esc(a.name)}</a></li>`)
             .join("\n          ")}
-          ${apps.length > 6 ? `<li><a href="/apps/">${esc(t(chrome.footerAllApps, { count: apps.length }))}</a></li>` : ""}
+          ${apps.length > 6 ? `<li><a href="${u("/apps/")}">${esc(t(chrome.footerAllApps, { count: apps.length }))}</a></li>` : ""}
         </ul>
       </div>
       <div>
         <h4>${esc(chrome.footerProject)}</h4>
         <ul>
-          <li><a href="/software/">${esc(chrome.footerOther)}</a></li>
-          <li><a href="/about/">${esc(chrome.footerAbout)}</a></li>
+          <li><a href="${u("/software/")}">${esc(chrome.footerOther)}</a></li>
+          <li><a href="${u("/about/")}">${esc(chrome.footerAbout)}</a></li>
           <li><a href="${attr(site.github)}" rel="noopener">${esc(chrome.footerGitHub)}</a></li>
         </ul>
       </div>
@@ -223,7 +234,7 @@ const shell = (site, page, apps, directory, body) => `<!doctype html>
 ${body}
   </main>
   ${siteFooter(site, apps)}
-  <script src="/assets/js/site.js${site.assets ? `?v=${site.assets.js}` : ""}" defer></script>
+  <script src="${u("/assets/js/site.js")}${site.assets ? `?v=${site.assets.js}` : ""}" defer></script>
 </body>
 </html>
 `;
@@ -235,7 +246,7 @@ const appHeader = (site, app, sections) => {
   return `
 <header class="site-header app-header">
   <div class="wrap site-header__inner">
-    <a class="brand" href="/apps/${attr(app.slug)}/">
+    <a class="brand" href="${u(`/apps/${attr(app.slug)}/`)}">
       ${appTile(app, "tile--sm")}
       <span>${esc(app.name)}</span>
     </a>
@@ -284,15 +295,15 @@ const appFooter = (site, app, siblings) => {
         <ul>
           ${siblings
             .slice(0, 4)
-            .map((a) => `<li><a href="/apps/${attr(a.slug)}/">${esc(a.name)}</a></li>`)
+            .map((a) => `<li><a href="${u(`/apps/${attr(a.slug)}/`)}">${esc(a.name)}</a></li>`)
             .join("\n          ")}
-          <li><a href="/apps/">${esc(copy.footerAll)}</a></li>
+          <li><a href="${u("/apps/")}">${esc(copy.footerAll)}</a></li>
         </ul>
       </div>
     </div>
     <div class="app-footer__bar">
       <span>${esc(t(copy.footerLicence, { app: app.name, licence: app.license }))}${app.language ? esc(t(copy.footerBuiltWith, { language: app.language })) : ""}</span>
-      <span>${esc(copy.footerPartOf)} <a href="/">${esc(site.name)}</a></span>
+      <span>${esc(copy.footerPartOf)} <a href="${u("/")}">${esc(site.name)}</a></span>
     </div>
   </div>
 </footer>`;
@@ -310,7 +321,7 @@ const appShell = (site, app, page, sections, siblings, body) => `<!doctype html>
 ${body}
   </main>
   ${appFooter(site, app, siblings)}
-  <script src="/assets/js/site.js${site.assets ? `?v=${site.assets.js}` : ""}" defer></script>
+  <script src="${u("/assets/js/site.js")}${site.assets ? `?v=${site.assets.js}` : ""}" defer></script>
 </body>
 </html>
 `;
@@ -320,7 +331,7 @@ ${body}
 /** An app's own icon where it has one, otherwise the accent monogram tile. */
 const appTile = (app, extraClass = "") =>
   app.icon
-    ? `<span class="tile tile--app ${extraClass}"><img src="${attr(app.icon)}" alt="" width="64" height="64" decoding="async"></span>`
+    ? `<span class="tile tile--app ${extraClass}"><img src="${attr(u(app.icon))}" alt="" width="64" height="64" decoding="async"></span>`
     : `<span class="tile ${extraClass}" aria-hidden="true">${esc(monogram(app.name))}</span>`;
 
 /**
@@ -329,7 +340,7 @@ const appTile = (app, extraClass = "") =>
  */
 const brandTile = (item, { accent, extraClass = "" } = {}) =>
   item.logo
-    ? `<span class="tile tile--logo ${extraClass}"><img src="${attr(item.logo)}" alt="" loading="lazy" decoding="async" width="64" height="64"></span>`
+    ? `<span class="tile tile--logo ${extraClass}"><img src="${attr(u(item.logo))}" alt="" loading="lazy" decoding="async" width="64" height="64"></span>`
     : `<span class="tile ${extraClass}"${accent ? ` data-accent="${attr(accent)}"` : ""} aria-hidden="true">${esc(monogram(item.name))}</span>`;
 
 const platformBadges = (platforms = []) =>
@@ -358,10 +369,10 @@ const downloadLabel = (app, copy) => {
 const resultItem = ({ accent, mark, logo, title, titleHref, titleExternal, category, blurb, badges, meta, actions, overlay, search }) => `
           <li class="item" data-item data-accent="${attr(accent)}" data-category="${attr(slugify(category))}" data-name="${attr(title.toLowerCase())}" data-blurb="${attr(search.toLowerCase())}">
             ${logo
-              ? `<span class="tile tile--logo item__tile"><img src="${attr(logo)}" alt="" loading="lazy" decoding="async" width="64" height="64"></span>`
+              ? `<span class="tile tile--logo item__tile"><img src="${attr(u(logo))}" alt="" loading="lazy" decoding="async" width="64" height="64"></span>`
               : `<span class="tile item__tile" aria-hidden="true">${esc(mark)}</span>`}
             <div class="item__body">
-              <h3 class="item__title"><a href="${attr(titleHref)}"${titleExternal ? ' rel="noopener nofollow"' : ""}${overlay ? ' class="item__link"' : ""}>${esc(title)}</a></h3>
+              <h3 class="item__title"><a href="${attr(titleExternal ? titleHref : u(titleHref))}"${titleExternal ? ' rel="noopener nofollow"' : ""}${overlay ? ' class="item__link"' : ""}>${esc(title)}</a></h3>
               <p class="badge badge--accent item__cat">${esc(category)}</p>
               <p class="item__blurb">${esc(blurb)}</p>
               ${badges ? `<ul class="badge-row item__badges">${badges}</ul>` : ""}
@@ -549,9 +560,9 @@ const floatField = (directory) => {
 
   const icon = (entry, i) =>
     `<a class="drift" href="${attr(entry.href)}" data-accent="${attr(entry.accent)}" rel="noopener nofollow" style="--x:${((points[i].x / REF_W) * 100).toFixed(2)}%;--y:${((points[i].y / REF_H) * 100).toFixed(2)}%;--drift-delay:-${(i % 9) * 2.3}s"
-            data-name="${attr(entry.name)}" data-mark="${attr(monogram(entry.name))}" data-logo="${attr(entry.logo)}" data-category="${attr(entry.category)}" data-blurb="${attr(entry.blurb)}" data-license="${attr(entry.license)}" data-platforms="${attr(entry.platforms)}">
+            data-name="${attr(entry.name)}" data-mark="${attr(monogram(entry.name))}" data-logo="${attr(entry.logo ? u(entry.logo) : "")}" data-category="${attr(entry.category)}" data-blurb="${attr(entry.blurb)}" data-license="${attr(entry.license)}" data-platforms="${attr(entry.platforms)}">
             ${entry.logo
-              ? `<span class="tile tile--logo"><img src="${attr(entry.logo)}" alt="" loading="lazy" decoding="async" width="64" height="64"></span>`
+              ? `<span class="tile tile--logo"><img src="${attr(u(entry.logo))}" alt="" loading="lazy" decoding="async" width="64" height="64"></span>`
               : `<span class="tile" aria-hidden="true">${esc(monogram(entry.name))}</span>`}
             <span class="visually-hidden">${esc(entry.name)}</span>
           </a>`;
@@ -583,7 +594,7 @@ export function renderHome(site, apps, directory) {
             </ul>
             ${(app.summary || []).length ? `<p class="switcher-panel__summary">${esc(app.summary[0])}</p>` : ""}
             <div class="feature__actions">
-              <a class="btn btn--primary" href="/apps/${attr(app.slug)}/">Visit ${esc(app.name)} ${icons.arrow(15)}</a>
+              <a class="btn btn--primary" href="${u(`/apps/${attr(app.slug)}/`)}">Visit ${esc(app.name)} ${icons.arrow(15)}</a>
               <a class="btn btn--secondary" href="${attr(downloadUrl(app))}" rel="noopener">${icons.download(16)} ${esc(downloadLabel(app, site.content.app))}</a>
             </div>
           </div>
@@ -628,7 +639,7 @@ export function renderHome(site, apps, directory) {
 
         ${
           apps.length > 1
-            ? `<div class="hero__actions" style="justify-content:center"><a class="btn btn--secondary" href="/apps/">${esc(t(copy.appsMore, { count: apps.length }))} ${icons.arrow(15)}</a></div>`
+            ? `<div class="hero__actions" style="justify-content:center"><a class="btn btn--secondary" href="${u("/apps/")}">${esc(t(copy.appsMore, { count: apps.length }))} ${icons.arrow(15)}</a></div>`
             : ""
         }
       </div>
@@ -641,7 +652,7 @@ export function renderHome(site, apps, directory) {
       </div>
       ${floatField(directory)}
       <div class="wrap center-block">
-        <a class="btn btn--secondary" href="/software/">${esc(copy.directoryLink)} ${icons.arrow(15)}</a>
+        <a class="btn btn--secondary" href="${u("/software/")}">${esc(copy.directoryLink)} ${icons.arrow(15)}</a>
       </div>
     </section>
 
@@ -765,7 +776,7 @@ export function renderApp(site, app, apps) {
   const body = `
     <section class="app-hero">
       <div class="wrap app-hero__inner">
-        <a class="back-link" href="/">${icons.arrowLeft()} ${esc(t(copy.backTo, { site: site.name }))}</a>
+        <a class="back-link" href="${u("/")}">${icons.arrowLeft()} ${esc(t(copy.backTo, { site: site.name }))}</a>
         ${appTile(app, "tile--lg")}
         <h1 class="app-hero__title">${esc(app.name)}</h1>
         <p class="app-hero__tagline">${esc(app.tagline)}</p>
@@ -958,10 +969,11 @@ const contentBlocks = (blocks, site, vars) =>
         return `<div class="hero__actions">
             ${block.items
               .map((action) => {
-                const href = t(action.href, {
+                const raw = t(action.href, {
                   issues: `https://github.com/${site.siteRepo}/issues/new`,
                   website: site.website || "/",
                 });
+                const href = /^https?:\/\//.test(raw) ? raw : u(raw);
                 const external = /^https?:\/\//.test(href);
                 const lead = action.icon === "github" ? `${icons.github(16)} ` : "";
                 const trail =
@@ -1018,7 +1030,7 @@ export function render404(site, apps, directory) {
           ${copy.actions
             .map(
               (action) =>
-                `<a class="btn btn--${attr(action.style)}" href="${attr(action.href)}">${esc(action.label)}</a>`
+                `<a class="btn btn--${attr(action.style)}" href="${attr(u(action.href))}">${esc(action.label)}</a>`
             )
             .join("\n          ")}
         </div>

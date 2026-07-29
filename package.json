@@ -1,0 +1,15 @@
+{
+  "name": "open-bioware-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static site for Open Bioware — open-source desktop software for the life sciences.",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "serve": "node build.mjs && node --run serve:only",
+    "serve:only": "npx --yes http-server . -p 8080 -c-1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

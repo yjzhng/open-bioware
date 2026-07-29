@@ -1,0 +1,159 @@
+[
+  {
+    "category": "Imaging & Microscopy",
+    "items": [
+      {
+        "name": "Fiji (ImageJ)",
+        "blurb": "The reference image-analysis platform for biology — ImageJ bundled with hundreds of curated plugins for segmentation, registration, tracking and stitching.",
+        "platforms": [
+          "macOS",
+          "Windows",
+          "Linux"
+        ],
+        "license": "GPL-3.0",
+        "site": "https://fiji.sc/",
+        "repo": "fiji/fiji",
+        "logo": "/assets/img/logos/fiji-imagej.png"
+      }
+    ]
+  },
+  {
+    "category": "Structures & Molecules",
+    "items": [
+      {
+        "name": "PyMOL (Open Source)",
+        "blurb": "The molecular graphics system behind a large share of published structure figures, in its community-maintained open-source build.",
+        "platforms": [
+          "macOS",
+          "Windows",
+          "Linux"
+        ],
+        "license": "BSD-like",
+        "site": "https://pymol.org",
+        "repo": "schrodinger/pymol-open-source",
+        "logo": "/assets/img/logos/pymol-open-source.png"
+      },
+      {
+        "name": "UCSF ChimeraX",
+        "blurb": "Molecular visualisation built for large structures, cryo-EM maps and publication-quality renders, from the team behind Chimera.",
+        "platforms": [
+          "macOS",
+          "Windows",
+          "Linux"
+        ],
+        "license": "Free for academic use",
+        "site": "https://www.rbvi.ucsf.edu/chimerax/",
+        "repo": "RBVI/ChimeraX",
+        "logo": "/assets/img/logos/ucsf-chimerax.svg"
+      },
+      {
+        "name": "Ketcher",
+        "blurb": "Browser-based chemical structure sketcher for drawing molecules and reactions, with SMILES and MOL import and export.",
+        "platforms": [
+          "Web"
+        ],
+        "license": "Apache-2.0",
+        "site": "https://lifescience.opensource.epam.com/ketcher/",
+        "repo": "epam/ketcher"
+      },
+      {
+        "name": "pLannotate",
+        "blurb": "Annotates engineered plasmids automatically — paste a sequence and get back labelled features, ready to check or export.",
+        "platforms": [
+          "Web",
+          "macOS",
+          "Windows",
+          "Linux"
+        ],
+        "license": "GPL-3.0",
+        "site": "http://plannotate.barricklab.org/",
+        "repo": "barricklab/pLannotate",
+        "logo": "/assets/img/logos/plannotate.png"
+      }
+    ]
+  },
+  {
+    "category": "Analysis & Visualisation",
+    "items": [
+      {
+        "name": "Cytoscape",
+        "blurb": "The standard desktop platform for building, styling and analysing biological networks, extended by a large app store.",
+        "platforms": [
+          "macOS",
+          "Windows",
+          "Linux"
+        ],
+        "license": "LGPL-2.1",
+        "site": "https://cytoscape.org",
+        "repo": "cytoscape/cytoscape",
+        "logo": "/assets/img/logos/cytoscape.svg"
+      },
+      {
+        "name": "RStudio Desktop",
+        "blurb": "The open-source IDE for R — the working environment for most Bioconductor and tidyverse analysis.",
+        "platforms": [
+          "macOS",
+          "Windows",
+          "Linux"
+        ],
+        "license": "AGPL-3.0",
+        "site": "https://posit.co/download/rstudio-desktop/",
+        "repo": "rstudio/rstudio",
+        "logo": "/assets/img/logos/rstudio-desktop.svg"
+      },
+      {
+        "name": "SuperPlotsOfData",
+        "blurb": "Turns replicate-level data into SuperPlots in the browser, showing every point and the independent experiments behind the summary statistics.",
+        "platforms": [
+          "Web"
+        ],
+        "license": "GPL-3.0",
+        "site": "https://huygens.science.uva.nl/SuperPlotsOfData/",
+        "repo": "JoachimGoedhart/SuperPlotsOfData"
+      },
+      {
+        "name": "Visual Studio Code",
+        "blurb": "General-purpose editor that has become the default for analysis scripts and notebooks, with first-class Python and R support.",
+        "platforms": [
+          "macOS",
+          "Windows",
+          "Linux"
+        ],
+        "license": "MIT source",
+        "site": "https://code.visualstudio.com",
+        "repo": "microsoft/vscode",
+        "logo": "/assets/img/logos/visual-studio-code.png"
+      }
+    ]
+  },
+  {
+    "category": "Writing, References & Notes",
+    "items": [
+      {
+        "name": "Zotero",
+        "blurb": "Reference manager that collects papers from the browser, syncs a library and inserts citations into Word, LibreOffice and Google Docs.",
+        "platforms": [
+          "macOS",
+          "Windows",
+          "Linux"
+        ],
+        "license": "AGPL-3.0",
+        "site": "https://www.zotero.org",
+        "repo": "zotero/zotero",
+        "logo": "/assets/img/logos/zotero.png"
+      },
+      {
+        "name": "Obsidian",
+        "blurb": "Plain-text notes stored as local Markdown files, with backlinks and graph views — a lab notebook you keep, in a format that outlives the app.",
+        "platforms": [
+          "macOS",
+          "Windows",
+          "Linux"
+        ],
+        "license": "Free for personal use",
+        "site": "https://obsidian.md",
+        "logo": "/assets/img/logos/obsidian.svg"
+      }
+    ]
+  }
+]

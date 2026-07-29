@@ -1,0 +1,32 @@
+name: Build
+
+# The generated HTML is committed to the repository so that GitHub Pages can
+# serve it straight from the default branch. This workflow re-runs the
+# generator and fails if the committed output is stale.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Generate the site
+        run: node build.mjs
+
+      - name: Fail if the committed HTML is out of date
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "::error::Generated files are out of date. Run 'node build.mjs' and commit the result."
+            git --no-pager diff --stat
+            exit 1
+          fi
+          echo "Generated output is up to date."

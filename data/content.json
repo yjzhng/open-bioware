@@ -1,0 +1,207 @@
+{
+  "_comment": "All page prose lives here. src/render.mjs holds only structure. Tokens {site}, {count}, {total} and {app} are substituted at build time.",
+  "chrome": {
+    "skipLink": "Skip to content",
+    "viewTile": "Tile view",
+    "viewList": "List view",
+    "viewGroupLabel": "Result layout",
+    "footerApps": "Apps",
+    "footerProject": "Project",
+    "footerOther": "Other software",
+    "footerAbout": "About",
+    "footerGitHub": "GitHub",
+    "footerAllApps": "All {count} applications",
+    "footerLicence": "Content licensed CC BY 4.0 · Site source on",
+    "footerLicenceLink": "GitHub"
+  },
+  "home": {
+    "heroTitle": "The open-source bioscience software collection",
+    "heroLede": "A personal collection of free desktop apps for biologists",
+    "appsHeading": "Currently available applications",
+    "appsHeadingOne": "The application we build",
+    "appsLede": "Select an app to see how it may help your research",
+    "appsMore": "View all {count} applications",
+    "directoryHeading": "Other free academic softwares",
+    "directoryLede": "Powerful open-source tools from the academic community. A collection of my personal favourites.",
+    "directoryLink": "See the full directory",
+    "ctaHeading": "Help make open source better",
+    "ctaBody": "Open-source softwares are passion-driven and are best supported by users (you). Help by providing feedback, reporting bugs and requesting for features.",
+    "ctaButton": "Contribute on GitHub"
+  },
+  "apps": {
+    "title": "Currently available applications",
+    "titleOne": "Currently available application",
+    "metaTitle": "Currently available applications",
+    "metaDescription": "{count} free, open-source desktop applications I built.",
+    "lede": "{count} free, open-source desktop applications I built.",
+    "ledeOne": "{count} free, open-source desktop applications I built.",
+    "searchLabel": "Search applications",
+    "searchPlaceholder": "Search {count} applications…",
+    "filterAll": "All",
+    "empty": "No applications match that search."
+  },
+  "directory": {
+    "title": "Other free academic softwares",
+    "lede": "Powerful open-source tools from the academic community. A collection of my personal favourites.",
+    "metaDescription": "{count} free tools for academic research — desktop and browser-based, nearly all open source.",
+    "searchLabel": "Search software",
+    "searchPlaceholder": "Search {count} applications…",
+    "filterAll": "All",
+    "empty": "No applications match that search.",
+    "calloutStrong": "Know something that belongs here?",
+    "calloutText": "If you know a free desktop app that you find hugely useful",
+    "calloutLink": "Suggest it on GitHub"
+  },
+  "app": {
+    "backTo": "{site}",
+    "navOverview": "Overview",
+    "navFeatures": "Features",
+    "navSpecifications": "Specifications",
+    "navCite": "Cite",
+    "headingOverview": "Overview",
+    "headingFeatures": "Features",
+    "headingSpecifications": "Specifications",
+    "headingCite": "How to cite",
+    "downloadDefault": "Download latest release",
+    "downloadShort": "Download",
+    "downloadMenuTitle": "Choose a build",
+    "downloadMenuAll": "See all files for this release",
+    "sourceCode": "Source code",
+    "versionHistory": "Version history",
+    "reportIssue": "Report an issue",
+    "officialNote": "Distributed by the project maintainers.",
+    "specGeneral": "General",
+    "specCategory": "Category",
+    "specPlatforms": "Platforms",
+    "specLicence": "Licence",
+    "specBuiltWith": "Built with",
+    "specPrice": "Price",
+    "specPriceValue": "Free",
+    "specVersion": "Latest version",
+    "specReleased": "Released",
+    "reqOperatingSystem": "Operating system",
+    "reqHardware": "Hardware",
+    "reqPlain": "Requirements",
+    "citeIntro": "If {app} contributed to your work, please cite it:",
+    "citeCopy": "Copy citation",
+    "citePaper": "Read the paper",
+    "footerMore": "More from {site}",
+    "footerAll": "All applications",
+    "footerLicence": "{app} is released under the {licence} licence.",
+    "footerBuiltWith": " Built with {language}.",
+    "footerPartOf": "Part of",
+    "downloadInstall": "Installation guide",
+    "documentation": "Documentation",
+    "projectWebsite": "Project website"
+  },
+  "about": {
+    "title": "About {site}",
+    "metaDescription": "About {site} — open-source desktop software for life sciences.",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "{site} hosts a collection of free, open-source desktop software developed for biological research"
+      },
+      {
+        "type": "h2",
+        "text": "Why open source"
+      },
+      {
+        "type": "p",
+        "text": "I believe in the collaborative scientific spirit. Good tools save time for scientists. By making such tools open and accessible instead of locking them behind commerical licenses, we can benefit from each other's work and accelerate research together."
+      },
+      {
+        "type": "h2",
+        "text": "What is on this site"
+      },
+      {
+        "type": "ticks",
+        "items": [
+          {
+            "strong": "Our applications.",
+            "text": "Each gets its own site with an overview, requirements, installation steps and a download that always points at the current release."
+          },
+          {
+            "strong": "A short list of {total} other tools.",
+            "text": "Software from other groups that we use ourselves, pointing you to each project's own website and, where there is one, its source repository."
+          }
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "How the list is chosen"
+      },
+      {
+        "type": "p",
+        "text": "This is a short, opinionated list rather than an exhaustive index. A tool earns a place only if:"
+      },
+      {
+        "type": "steps",
+        "items": [
+          "We use it ourselves in real work.",
+          "It is free to obtain, without registration or a licence request.",
+          "It is actively maintained.",
+          "It has a graphical interface that is easy to use — desktop or browser.",
+          "It runs locally on your computer without internet dependencies"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Most of these are open source, which is what we prefer and what we build. A few are free to use without being open source — UCSF ChimeraX is free for academic use, Obsidian is free for personal use, and Visual Studio Code's source is MIT while Microsoft's own builds carry their licence. We list those anyway because they earn their place, and the licence badge on each entry says exactly what you are getting rather than glossing over it."
+      },
+      {
+        "type": "p",
+        "text": "We are not affiliated with any of these projects, and listing is not endorsement by them of us. We deliberately do not host or link to installers: each entry sends you to the project's own site, so you always download from the maintainers themselves and see their current instructions. Names and trademarks belong to their respective owners."
+      },
+      {
+        "type": "h2",
+        "text": "Corrections and suggestions"
+      },
+      {
+        "type": "p",
+        "text": "The whole site is a public repository. If a link has rotted, a description is wrong, or a tool deserves a place in the directory, open an issue or send a pull request."
+      },
+      {
+        "type": "actions",
+        "items": [
+          {
+            "label": "Open an issue",
+            "href": "{issues}",
+            "style": "primary",
+            "icon": "github"
+          },
+          {
+            "label": "Browse the directory",
+            "href": "/software/",
+            "style": "secondary",
+            "icon": "arrow"
+          },
+          {
+            "label": "yjzhng.github.io",
+            "href": "{website}",
+            "style": "secondary",
+            "icon": "external"
+          }
+        ]
+      }
+    ]
+  },
+  "notFound": {
+    "metaTitle": "Page not found",
+    "eyebrow": "Error 404",
+    "title": "This page does not exist",
+    "text": "The page you asked for may have been moved or renamed.",
+    "actions": [
+      {
+        "label": "Back to home",
+        "href": "/",
+        "style": "primary"
+      },
+      {
+        "label": "Browse applications",
+        "href": "/apps/",
+        "style": "secondary"
+      }
+    ]
+  }
+}

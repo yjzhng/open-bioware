@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en" data-accent="teal">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UniOme — A local-first annotation browser for prokaryotes — genes, structures, interactions, regulation and pathways, served entirely from files on your own machine.</title>
+  <meta name="description" content="A local-first annotation browser for prokaryotes — genes, structures, interactions, regulation and pathways, served entirely from files on your own machine.">
+  <link rel="canonical" href="https://open-bioware.github.io/apps/uniome/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="UniOme">
+  <meta property="og:title" content="UniOme — A local-first annotation browser for prokaryotes — genes, structures, interactions, regulation and pathways, served entirely from files on your own machine.">
+  <meta property="og:description" content="A local-first annotation browser for prokaryotes — genes, structures, interactions, regulation and pathways, served entirely from files on your own machine.">
+  <meta property="og:url" content="https://open-bioware.github.io/apps/uniome/">
+  <meta property="og:image" content="https://open-bioware.github.io/assets/img/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b0f12" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/css/site.css?v=11fffab8dc">
+  <script>(function(){try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}})()</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"UniOme","description":"A local-first annotation browser for prokaryotes — genes, structures, interactions, regulation and pathways, served entirely from files on your own machine.","applicationCategory":"ScientificApplication","operatingSystem":"macOS","license":"MIT","url":"https://open-bioware.github.io/apps/uniome/","downloadUrl":"https://github.com/yjzhng/UniOme/releases/latest","author":{"@type":"Organization","name":"Open Bioware","url":"https://open-bioware.github.io"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"isAccessibleForFree":true}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  
+<header class="site-header app-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="/apps/uniome/">
+      <span class="tile tile--app tile--sm"><img src="/assets/img/apps/uniome.png" alt="" width="64" height="64" decoding="async"></span>
+      <span>UniOme</span>
+    </a>
+    <nav class="site-nav" aria-label="UniOme sections">
+      <a href="#overview">Overview</a>
+      <a href="#features">Features</a>
+      <a href="#specifications">Specifications</a>
+      <a href="#cite">Cite</a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn btn--primary btn--sm" href="https://github.com/yjzhng/UniOme/releases/latest" rel="noopener"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5"/><path d="M3 16.5v1.5a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3v-1.5"/></svg> Download</a>
+      <a class="icon-btn" href="https://github.com/yjzhng/UniOme" aria-label="UniOme source code" rel="noopener"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M12 1.5a10.5 10.5 0 0 0-3.32 20.47c.53.1.72-.23.72-.5v-1.9c-2.92.63-3.54-1.25-3.54-1.25-.48-1.22-1.17-1.54-1.17-1.54-.96-.65.07-.64.07-.64 1.06.08 1.61 1.09 1.61 1.09.94 1.6 2.47 1.14 3.07.87.1-.68.37-1.14.67-1.4-2.33-.27-4.78-1.17-4.78-5.19 0-1.15.41-2.08 1.09-2.82-.11-.27-.47-1.34.1-2.79 0 0 .88-.28 2.89 1.08a10 10 0 0 1 5.26 0c2-1.36 2.89-1.08 2.89-1.08.57 1.45.21 2.52.1 2.79.68.74 1.09 1.67 1.09 2.82 0 4.03-2.46 4.91-4.8 5.17.38.33.71.97.71 1.96v2.9c0 .28.19.61.73.51A10.5 10.5 0 0 0 12 1.5Z"/></svg></a>
+      <button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-label="Switch colour theme"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="icon-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2.25v1.5M12 20.25v1.5M4.22 4.22l1.06 1.06M18.72 18.72l1.06 1.06M2.25 12h1.5M20.25 12h1.5M4.22 19.78l1.06-1.06M18.72 5.28l1.06-1.06"/></svg><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="icon-moon"><path d="M20.25 14.4A8.25 8.25 0 0 1 9.6 3.75a8.25 8.25 0 1 0 10.65 10.65Z"/></svg></button>
+    </div>
+  </div>
+</header>
+  <main id="main">
+
+    <section class="app-hero">
+      <div class="wrap app-hero__inner">
+        <a class="back-link" href="/"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19.5 12h-15m0 0 5.25-5.25M4.5 12l5.25 5.25"/></svg> Open Bioware</a>
+        <span class="tile tile--app tile--lg"><img src="/assets/img/apps/uniome.png" alt="" width="64" height="64" decoding="async"></span>
+        <h1 class="app-hero__title">UniOme</h1>
+        <p class="app-hero__tagline">A local-first annotation browser for prokaryotes — genes, structures, interactions, regulation and pathways, served entirely from files on your own machine.</p>
+        <div class="app-hero__actions">
+          <div class="dl" data-download data-repo="yjzhng/UniOme">
+            <a class="btn btn--primary btn--lg dl__main" href="https://github.com/yjzhng/UniOme/releases/latest" rel="noopener"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5"/><path d="M3 16.5v1.5a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3v-1.5"/></svg> Download latest release</a>
+            <button class="btn btn--primary btn--lg dl__toggle" type="button" data-download-toggle aria-expanded="false" aria-label="Choose a platform"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="caret"><path d="m6 9 6 6 6-6"/></svg></button>
+            <div class="dl__menu" data-download-menu hidden>
+              <p class="dl__title">Choose a build</p>
+              <ul data-download-list>
+                <li><a href="https://github.com/yjzhng/UniOme/releases/latest" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.75 8.25v-3a1.5 1.5 0 0 1 1.5-1.5h3a1.5 1.5 0 0 1 1.06.44l9 9a1.5 1.5 0 0 1 0 2.12l-4.5 4.5a1.5 1.5 0 0 1-2.12 0l-9-9a1.5 1.5 0 0 1-.44-1.06Z"/><path d="M7.5 7.5h.008"/></svg> <span>See all files for this release</span></a></li>
+              </ul>
+            </div>
+          </div>
+          <a class="btn btn--secondary btn--sm" href="https://github.com/yjzhng/UniOme" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 1.5a10.5 10.5 0 0 0-3.32 20.47c.53.1.72-.23.72-.5v-1.9c-2.92.63-3.54-1.25-3.54-1.25-.48-1.22-1.17-1.54-1.17-1.54-.96-.65.07-.64.07-.64 1.06.08 1.61 1.09 1.61 1.09.94 1.6 2.47 1.14 3.07.87.1-.68.37-1.14.67-1.4-2.33-.27-4.78-1.17-4.78-5.19 0-1.15.41-2.08 1.09-2.82-.11-.27-.47-1.34.1-2.79 0 0 .88-.28 2.89 1.08a10 10 0 0 1 5.26 0c2-1.36 2.89-1.08 2.89-1.08.57 1.45.21 2.52.1 2.79.68.74 1.09 1.67 1.09 2.82 0 4.03-2.46 4.91-4.8 5.17.38.33.71.97.71 1.96v2.9c0 .28.19.61.73.51A10.5 10.5 0 0 0 12 1.5Z"/></svg> Source code</a>
+          <a class="btn btn--secondary btn--sm" href="https://github.com/yjzhng/UniOme/releases" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.75 8.25v-3a1.5 1.5 0 0 1 1.5-1.5h3a1.5 1.5 0 0 1 1.06.44l9 9a1.5 1.5 0 0 1 0 2.12l-4.5 4.5a1.5 1.5 0 0 1-2.12 0l-9-9a1.5 1.5 0 0 1-.44-1.06Z"/><path d="M7.5 7.5h.008"/></svg> Version history</a>
+          <a class="btn btn--secondary btn--sm" href="https://github.com/yjzhng/UniOme/issues" rel="noopener"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 16.5v-5.25M12 8.25h.008"/></svg> Report an issue</a>
+        </div>
+        <p class="release-meta" data-release data-repo="yjzhng/UniOme"></p>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <div class="app-layout">
+        <div class="prose">
+          <h2 id="overview">Overview</h2>
+          <p>UniOme brings together the annotation you would otherwise chase across a dozen web databases — per-gene annotation, protein and RNA structure and features, interactions, regulation and pathways — and puts it in one browser that runs on your own machine. There is no database server to install and no network round-trip: everything is served from local files.</p>
+          <p>Four organisms ship today: Escherichia coli K-12, Mycobacterium tuberculosis H37Rv, Staphylococcus aureus NCTC 8325 and Bacillus subtilis 168. More are added over time, and the data-build scripts live in the repository so a new organism can be ported.</p>
+
+          <h2 id="features">Features</h2>
+          <ul class="highlight-grid">
+            <li class="highlight"><strong>Around 30 databases, one interface</strong><p>Annotation integrated from roughly thirty external biological databases, cross-linked per gene instead of scattered across separate sites.</p></li>
+            <li class="highlight"><strong>Works offline</strong><p>No database server, no account and no network dependency — the datasets ship with the app and are read straight from disk.</p></li>
+            <li class="highlight"><strong>Structure and features in context</strong><p>Protein and RNA structure and features sit alongside the interactions, regulation and pathway data for the same gene.</p></li>
+            <li class="highlight"><strong>Provenance you can audit</strong><p>Every dataset&#39;s origin, licence and primary citation is documented, so you can tell where any given value came from.</p></li>
+          </ul>
+
+          <h2 id="specifications">Specifications</h2>
+          <div class="spec-grid">
+            <div class="spec-col">
+            <p class="spec-title">General</p>
+            <dl class="specs">
+            <div><dt>Category</dt><dd>Genomics &amp; Annotation</dd></div>
+            <div><dt>Platforms</dt><dd>macOS</dd></div>
+            <div><dt>Licence</dt><dd>MIT</dd></div>
+            <div><dt>Built with</dt><dd>TypeScript</dd></div>
+            <div><dt>Price</dt><dd>Free</dd></div>
+            <div><dt>Latest version</dt><dd data-release-version data-repo="yjzhng/UniOme">—</dd></div>
+            <div><dt>Released</dt><dd data-release-date>—</dd></div>
+            </dl>
+            </div>
+            <div class="reqs">
+            <div class="reqs__group">
+              <p class="spec-title">Operating system</p>
+              <ul class="reqs__list"><li><span class="reqs__key">macOS</span><span class="reqs__val">Apple silicon (arm64) or Intel (x64) — packaged builds</span></li><li><span class="reqs__key">Other</span><span class="reqs__val">Runs from source on any OS with Node.js</span></li></ul>
+            </div>
+            <div class="reqs__group">
+              <p class="spec-title">Hardware</p>
+              <ul class="reqs__list"><li><span class="reqs__key">Disk</span><span class="reqs__val">Several GB — the datasets ship with the app</span></li></ul>
+            </div>
+          </div>
+          </div>
+
+          <h2 id="cite">How to cite</h2>
+          <p>If UniOme contributed to your work, please cite it:</p>
+          <blockquote class="cite" data-citation>yjzhng (2026). UniOme: a local-first annotation-database browser for prokaryotes. Version 0.1.0. https://github.com/yjzhng/UniOme</blockquote>
+          <button class="copy-btn" type="button" data-copy><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11.25" height="11.25" rx="1.5"/><path d="M6.75 15H5.25A1.5 1.5 0 0 1 3.75 13.5V5.25A1.5 1.5 0 0 1 5.25 3.75h8.25A1.5 1.5 0 0 1 15 5.25v1.5"/></svg> <span>Copy citation</span></button>
+          <p><a href="https://github.com/yjzhng/UniOme/blob/main/CITATION.cff" rel="noopener">Read the paper <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.5 5.25h5.25V10.5"/><path d="m18.75 5.25-7.5 7.5"/><path d="M18 14.25v3.75a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18V8.25A2.25 2.25 0 0 1 6 6h3.75"/></svg></a></p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+  
+<footer class="app-footer">
+  <div class="wrap">
+    <div class="app-footer__grid">
+      <div>
+        <span class="brand">
+          <span class="tile tile--app tile--sm"><img src="/assets/img/apps/uniome.png" alt="" width="64" height="64" decoding="async"></span>
+          <span>UniOme</span>
+        </span>
+        <p class="app-footer__about">A local-first annotation browser for prokaryotes — genes, structures, interactions, regulation and pathways, served entirely from files on your own machine.</p>
+      </div>
+      <div>
+        <h4>UniOme</h4>
+        <ul>
+          <li><a href="https://github.com/yjzhng/UniOme/releases/latest" rel="noopener">Download</a></li>
+          <li><a href="https://github.com/yjzhng/UniOme" rel="noopener">Source code</a></li>
+          
+          
+          <li><a href="https://github.com/yjzhng/UniOme/releases" rel="noopener">Version history</a></li>
+          <li><a href="https://github.com/yjzhng/UniOme/issues" rel="noopener">Report an issue</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>More from Open Bioware</h4>
+        <ul>
+          <li><a href="/apps/chemsketcher/">ChemSketcher</a></li>
+          <li><a href="/apps/chemviewer/">ChemViewer</a></li>
+          <li><a href="/apps/">All applications</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="app-footer__bar">
+      <span>UniOme is released under the MIT licence. Built with TypeScript.</span>
+      <span>Part of <a href="/">Open Bioware</a></span>
+    </div>
+  </div>
+</footer>
+  <script src="/assets/js/site.js?v=3e57796c98" defer></script>
+</body>
+</html>

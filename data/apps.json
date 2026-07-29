@@ -1,0 +1,173 @@
+[
+  {
+    "slug": "uniome",
+    "name": "UniOme",
+    "tagline": "A local-first annotation browser for prokaryotes — genes, structures, interactions, regulation and pathways, served entirely from files on your own machine.",
+    "category": "Genomics & Annotation",
+    "repo": "yjzhng/UniOme",
+    "license": "MIT",
+    "language": "TypeScript",
+    "platforms": [
+      "macOS"
+    ],
+    "accent": "teal",
+    "download": {
+      "type": "github"
+    },
+    "summary": [
+      "UniOme brings together the annotation you would otherwise chase across a dozen web databases — per-gene annotation, protein and RNA structure and features, interactions, regulation and pathways — and puts it in one browser that runs on your own machine. There is no database server to install and no network round-trip: everything is served from local files.",
+      "Four organisms ship today: Escherichia coli K-12, Mycobacterium tuberculosis H37Rv, Staphylococcus aureus NCTC 8325 and Bacillus subtilis 168. More are added over time, and the data-build scripts live in the repository so a new organism can be ported."
+    ],
+    "highlights": [
+      {
+        "title": "Around 30 databases, one interface",
+        "body": "Annotation integrated from roughly thirty external biological databases, cross-linked per gene instead of scattered across separate sites."
+      },
+      {
+        "title": "Works offline",
+        "body": "No database server, no account and no network dependency — the datasets ship with the app and are read straight from disk."
+      },
+      {
+        "title": "Structure and features in context",
+        "body": "Protein and RNA structure and features sit alongside the interactions, regulation and pathway data for the same gene."
+      },
+      {
+        "title": "Provenance you can audit",
+        "body": "Every dataset's origin, licence and primary citation is documented, so you can tell where any given value came from."
+      }
+    ],
+    "requirements": {
+      "os": {
+        "macOS": "Apple silicon (arm64) or Intel (x64) — packaged builds",
+        "Other": "Runs from source on any OS with Node.js"
+      },
+      "hardware": {
+        "Disk": "Several GB — the datasets ship with the app"
+      }
+    },
+    "citation": {
+      "text": "yjzhng (2026). UniOme: a local-first annotation-database browser for prokaryotes. Version 0.1.0. https://github.com/yjzhng/UniOme",
+      "url": "https://github.com/yjzhng/UniOme/blob/main/CITATION.cff"
+    },
+    "tags": [
+      "bioinformatics",
+      "prokaryotes",
+      "genome annotation",
+      "protein structure",
+      "escherichia coli"
+    ],
+    "icon": "/assets/img/apps/uniome.png"
+  },
+  {
+    "slug": "chemsketcher",
+    "name": "ChemSketcher",
+    "tagline": "Draw a molecule and watch its physicochemical properties compute live — an open-source sketchpad with an RDKit property table built in.",
+    "category": "Chemistry & Cheminformatics",
+    "repo": "yjzhng/ChemSketcher",
+    "license": "MIT",
+    "language": "TypeScript",
+    "platforms": [
+      "macOS"
+    ],
+    "accent": "indigo",
+    "download": {
+      "type": "github"
+    },
+    "summary": [
+      "ChemSketcher is a desktop molecule sketchpad built on EPAM Ketcher, paired with an interactive table that computes physicochemical properties with RDKit as you draw. Sketch a structure or paste a SMILES string and the numbers appear beside it, with no round-trip to a web service.",
+      "Every distinct molecule on the canvas is recognised automatically and gets its own row, so you can compare a series side by side while you are still drawing it."
+    ],
+    "highlights": [
+      {
+        "title": "Properties as you draw",
+        "body": "SMILES, molecular weight, logP, TPSA, hydrogen-bond donors and acceptors, ring counts, QED and InChIKey, computed live by RDKit."
+      },
+      {
+        "title": "Each molecule found automatically",
+        "body": "Draw several structures on one canvas and each distinct molecule is detected and given its own row in the table."
+      },
+      {
+        "title": "Reads and writes the usual formats",
+        "body": "Open and save .mol, .sdf, .ket and .smi files directly, so it fits whatever your pipeline already uses."
+      },
+      {
+        "title": "A layout you control",
+        "body": "Choose which properties to show, move or hide the table, and drag the divider to give the canvas the room it needs."
+      }
+    ],
+    "requirements": {
+      "os": {
+        "macOS": "Apple silicon (arm64) or Intel (x64) — packaged builds",
+        "Other": "Runs from source on any OS with Node.js"
+      },
+      "hardware": {
+        "Disk": "~1 GB for the bundled chemistry engine",
+        "Network": "Needed once, on first launch"
+      }
+    },
+    "tags": [
+      "cheminformatics",
+      "rdkit",
+      "ketcher",
+      "smiles",
+      "molecule editor"
+    ],
+    "icon": "/assets/img/apps/chemsketcher.png"
+  },
+  {
+    "slug": "chemviewer",
+    "name": "ChemViewer",
+    "tagline": "Explore chemical libraries interactively — compound properties, distribution statistics and side-by-side comparison, all computed locally.",
+    "category": "Chemistry & Cheminformatics",
+    "repo": "yjzhng/ChemViewer",
+    "license": "MIT",
+    "language": "TypeScript",
+    "platforms": [
+      "macOS"
+    ],
+    "accent": "violet",
+    "download": {
+      "type": "github"
+    },
+    "summary": [
+      "ChemViewer opens a chemical library and lets you actually look at it: browse compounds in a virtualised table, inspect property distributions across the whole set, and compare one library against another. Depiction, descriptors and substructure search all run locally through RDKit's WebAssembly build.",
+      "It is built to stay light on a laptop. Small libraries are held in memory; anything over about 50 MB is queried on disk with DuckDB instead, and large sets are subsampled before analysis — with an option to compute full statistics when you want them."
+    ],
+    "highlights": [
+      {
+        "title": "Reads the formats you already have",
+        "body": "CSV, SDF, SMILES and CXSMILES — drop the files into a folder named after the library and it appears."
+      },
+      {
+        "title": "Large files without the wait",
+        "body": "Libraries over 50 MB are queried on disk via DuckDB rather than loaded into memory, so opening one does not stall your machine."
+      },
+      {
+        "title": "See the whole library, not just rows",
+        "body": "Property statistics, UMAP embedding plots, and library-versus-library comparison alongside the compound table."
+      },
+      {
+        "title": "Sketch to search",
+        "body": "An embedded Ketcher canvas lets you draw a substructure and filter the library by it."
+      }
+    ],
+    "requirements": {
+      "os": {
+        "macOS": "Apple silicon (arm64) — packaged build",
+        "Other": "Intel Macs and other OSes: run from source with Node.js"
+      },
+      "hardware": {
+        "Memory": "8 GB — libraries under 50 MB are held in memory",
+        "Disk": "Space for your libraries, plus dependencies"
+      }
+    },
+    "tags": [
+      "cheminformatics",
+      "rdkit",
+      "duckdb",
+      "chemical library",
+      "umap"
+    ],
+    "icon": "/assets/img/apps/chemviewer.png"
+  }
+]

@@ -2,11 +2,11 @@
   "name": "Open Bioware",
   "tagline": "The open-source bioscience software collection",
   "description": "A personal collection of free productivity apps to empower bioscientists",
-  "url": "https://yjzhng.github.io/open-bioware.github.io",
-  "basePath": "/open-bioware.github.io",
+  "url": "https://yjzhng.github.io/open-bioware",
+  "basePath": "/open-bioware",
   "github": "https://github.com/yjzhng",
   "website": "https://yjzhng.github.io/",
-  "siteRepo": "yjzhng/open-bioware.github.io",
+  "siteRepo": "yjzhng/open-bioware",
   "nav": [
     {
       "label": "Home",

@@ -1,10 +1,10 @@
-# open-bioware.github.io
+# open-bioware
 
 Website for **Open Bioware** — the home page for the open-source desktop
 applications we build, plus a directory of other open-source scientific software
 worth knowing about.
 
-Live at <https://yjzhng.github.io/open-bioware.github.io/>.
+Live at <https://yjzhng.github.io/open-bioware/>.
 
 ---
 
@@ -13,9 +13,8 @@ Live at <https://yjzhng.github.io/open-bioware.github.io/>.
 Everything on the site is generated from three JSON files in [`data/`](data/).
 To publish an application you only ever edit `data/apps.json`, then rebuild.
 
-1. Open [`data/apps.json`](data/apps.json). It currently contains six clearly
-   marked placeholder entries so you can see how the catalogue looks with a
-   collection in it — replace them with your own apps and delete the rest.
+1. Open [`data/apps.json`](data/apps.json) and add an entry, or edit one of the
+   existing ones. Every field is listed below; only a handful are required.
 2. Run the generator:
    ```sh
    node build.mjs
@@ -268,12 +267,12 @@ Add a block type by extending `contentBlocks()` in `src/render.mjs`.
 ## Base path
 
 GitHub Pages serves a repo at the domain root only when the repo is named
-`<owner>.github.io`. This one is `open-bioware.github.io` under the owner
-`yjzhng`, so it is a *project* site served from a subpath, and `site.json` sets:
+`<owner>.github.io`. This one is `open-bioware` under the owner `yjzhng`, so it is a *project* site
+served from a subpath, and `site.json` sets:
 
 ```jsonc
-"url":      "https://yjzhng.github.io/open-bioware.github.io",
-"basePath": "/open-bioware.github.io"
+"url":      "https://yjzhng.github.io/open-bioware",
+"basePath": "/open-bioware"
 ```
 
 Every internal URL the generator emits is passed through one `u()` helper that

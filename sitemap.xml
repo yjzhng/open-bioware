@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://yjzhng.github.io/open-bioware.github.io/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://yjzhng.github.io/open-bioware.github.io/apps/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://yjzhng.github.io/open-bioware.github.io/software/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://yjzhng.github.io/open-bioware.github.io/about/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://yjzhng.github.io/open-bioware.github.io/apps/uniome/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://yjzhng.github.io/open-bioware.github.io/apps/chemsketcher/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://yjzhng.github.io/open-bioware.github.io/apps/chemviewer/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yjzhng.github.io/open-bioware/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://yjzhng.github.io/open-bioware/apps/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yjzhng.github.io/open-bioware/software/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yjzhng.github.io/open-bioware/about/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yjzhng.github.io/open-bioware/apps/uniome/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yjzhng.github.io/open-bioware/apps/chemsketcher/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yjzhng.github.io/open-bioware/apps/chemviewer/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>

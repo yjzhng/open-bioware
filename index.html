@@ -18,7 +18,7 @@
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0b0f12" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="/open-bioware/assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/open-bioware/assets/css/site.css?v=11fffab8dc">
+  <link rel="stylesheet" href="/open-bioware/assets/css/site.css?v=8a7f95df1a">
   <script>(function(){try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}})()</script>
 </head>
 <body>
@@ -39,6 +39,7 @@
               <p class="mega__heading">Genomics &amp; Annotation</p>
               <ul>
                 <li><a href="/open-bioware/apps/uniome/"><span class="tile tile--app tile--xs"><img src="/open-bioware/assets/img/apps/uniome.png" alt="" width="64" height="64" decoding="async"></span>UniOme</a></li>
+                <li><a href="/open-bioware/apps/prokdb/"><span class="tile tile--app tile--xs"><img src="/open-bioware/assets/img/apps/prokdb.png" alt="" width="64" height="64" decoding="async"></span>prokDB</a></li>
               </ul>
             </div>
             <div class="mega__group">
@@ -49,7 +50,7 @@
               </ul>
             </div>
           </div>
-          <div class="mega__foot"><a href="/open-bioware/apps/">All 3 applications <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="arrow"><path d="M4.5 12h15m0 0-5.25-5.25M19.5 12l-5.25 5.25"/></svg></a></div>
+          <div class="mega__foot"><a href="/open-bioware/apps/">All 4 applications <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="arrow"><path d="M4.5 12h15m0 0-5.25-5.25M19.5 12l-5.25 5.25"/></svg></a></div>
         </div>
         </li>
         <li class="">
@@ -89,6 +90,10 @@
             <span class="tile tile--app "><img src="/open-bioware/assets/img/apps/uniome.png" alt="" width="64" height="64" decoding="async"></span>
             <span class="dock-app__name">UniOme</span>
           </a>
+          <a class="dock-app" href="#app-prokdb" data-tab="prokdb" aria-selected="false" data-accent="emerald">
+            <span class="tile tile--app "><img src="/open-bioware/assets/img/apps/prokdb.png" alt="" width="64" height="64" decoding="async"></span>
+            <span class="dock-app__name">prokDB</span>
+          </a>
           <a class="dock-app" href="#app-chemsketcher" data-tab="chemsketcher" aria-selected="false" data-accent="indigo">
             <span class="tile tile--app "><img src="/open-bioware/assets/img/apps/chemsketcher.png" alt="" width="64" height="64" decoding="async"></span>
             <span class="dock-app__name">ChemSketcher</span>
@@ -121,6 +126,29 @@
             <li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="check"><path d="m4.5 12.75 5.25 5.25L19.5 6.75"/></svg><span><strong>Works offline</strong>No database server, no account and no network dependency — the datasets ship with the app and are read straight from disk.</span></li>
             <li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="check"><path d="m4.5 12.75 5.25 5.25L19.5 6.75"/></svg><span><strong>Structure and features in context</strong>Protein and RNA structure and features sit alongside the interactions, regulation and pathway data for the same gene.</span></li>
             <li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="check"><path d="m4.5 12.75 5.25 5.25L19.5 6.75"/></svg><span><strong>Provenance you can audit</strong>Every dataset&#39;s origin, licence and primary citation is documented, so you can tell where any given value came from.</span></li>
+          </ul>
+        </section>
+        <section class="switcher-panel" id="app-prokdb" data-panel="prokdb" data-accent="emerald" aria-label="prokDB">
+          <div>
+            <span class="tile tile--app tile--lg"><img src="/open-bioware/assets/img/apps/prokdb.png" alt="" width="64" height="64" decoding="async"></span>
+            <h3 class="feature__title">prokDB</h3>
+            <p class="switcher-panel__lede">Build one merged gene-annotation table for any prokaryote — NCBI, UniProt and KEGG integrated by a seven-step pipeline, as a desktop app or a command line.</p>
+            <ul class="badge-row" style="margin-top:1.1rem">
+              <li><span class="badge badge--accent">Genomics &amp; Annotation</span></li>
+              <li><span class="badge">macOS</span></li>
+              <li><span class="badge badge--mono">MIT</span></li>
+            </ul>
+            <p class="switcher-panel__summary">prokDB takes a tax ID and returns a single annotation table for that organism, merging NCBI RefSeq and GenBank genome features, UniProt protein annotation and KEGG pathways and families into one CSV — with optional subcellular localisation predicted locally by DeepLocPro.</p>
+            <div class="feature__actions">
+              <a class="btn btn--primary" href="/open-bioware/apps/prokdb/">Visit prokDB <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="arrow"><path d="M4.5 12h15m0 0-5.25-5.25M19.5 12l-5.25 5.25"/></svg></a>
+              <a class="btn btn--secondary" href="https://github.com/yjzhng/prokDB/releases/latest" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5"/><path d="M3 16.5v1.5a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3v-1.5"/></svg> Download latest release</a>
+            </div>
+          </div>
+          <ul class="feature__list">
+            <li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="check"><path d="m4.5 12.75 5.25 5.25L19.5 6.75"/></svg><span><strong>Four annotation sources, one table</strong>NCBI RefSeq and GenBank, UniProt and KEGG merged per gene, with a stable local ID and a documented column for every source.</span></li>
+            <li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="check"><path d="m4.5 12.75 5.25 5.25L19.5 6.75"/></svg><span><strong>Nothing to install first</strong>On first launch the app fetches its own CPython and the pipeline&#39;s packages via uv, all inside its own directory — no conda, no system Python.</span></li>
+            <li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="check"><path d="m4.5 12.75 5.25 5.25L19.5 6.75"/></svg><span><strong>Localisation predicted on your machine</strong>DeepLocPro predicts prokaryotic subcellular localisation locally, adding a localz column to the merged database.</span></li>
+            <li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="check"><path d="m4.5 12.75 5.25 5.25L19.5 6.75"/></svg><span><strong>Resumable, and scriptable</strong>Runs skip any step whose output already exists, so an interrupted build picks up where it stopped; batch mode takes a CSV of organisms in one go.</span></li>
           </ul>
         </section>
         <section class="switcher-panel" id="app-chemsketcher" data-panel="chemsketcher" data-accent="indigo" aria-label="ChemSketcher">
@@ -172,7 +200,7 @@
           </div>
         </div>
 
-        <div class="hero__actions" style="justify-content:center"><a class="btn btn--secondary" href="/open-bioware/apps/">View all 3 applications <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="arrow"><path d="M4.5 12h15m0 0-5.25-5.25M19.5 12l-5.25 5.25"/></svg></a></div>
+        <div class="hero__actions" style="justify-content:center"><a class="btn btn--secondary" href="/open-bioware/apps/">View all 4 applications <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="arrow"><path d="M4.5 12h15m0 0-5.25-5.25M19.5 12l-5.25 5.25"/></svg></a></div>
       </div>
     </section>
 
@@ -258,6 +286,7 @@
         <h4>Apps</h4>
         <ul>
           <li><a href="/open-bioware/apps/uniome/">UniOme</a></li>
+          <li><a href="/open-bioware/apps/prokdb/">prokDB</a></li>
           <li><a href="/open-bioware/apps/chemsketcher/">ChemSketcher</a></li>
           <li><a href="/open-bioware/apps/chemviewer/">ChemViewer</a></li>
           

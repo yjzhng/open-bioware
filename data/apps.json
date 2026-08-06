@@ -59,6 +59,62 @@
     "icon": "/assets/img/apps/uniome.png"
   },
   {
+    "slug": "prokdb",
+    "name": "prokDB",
+    "tagline": "Build one merged gene-annotation table for any prokaryote — NCBI, UniProt and KEGG integrated by a seven-step pipeline, as a desktop app or a command line.",
+    "category": "Genomics & Annotation",
+    "repo": "yjzhng/prokDB",
+    "license": "MIT",
+    "language": "TypeScript",
+    "platforms": [
+      "macOS"
+    ],
+    "accent": "emerald",
+    "download": {
+      "type": "github"
+    },
+    "summary": [
+      "prokDB takes a tax ID and returns a single annotation table for that organism, merging NCBI RefSeq and GenBank genome features, UniProt protein annotation and KEGG pathways and families into one CSV — with optional subcellular localisation predicted locally by DeepLocPro.",
+      "The desktop app is a front end for the same seven-step pipeline you can run from the command line, sharing one output tree. Steps can be run individually or all at once, completed steps are detected from the files on disk, and the finished database can be previewed — sorted, filtered and paged — without leaving the window."
+    ],
+    "highlights": [
+      {
+        "title": "Four annotation sources, one table",
+        "body": "NCBI RefSeq and GenBank, UniProt and KEGG merged per gene, with a stable local ID and a documented column for every source."
+      },
+      {
+        "title": "Nothing to install first",
+        "body": "On first launch the app fetches its own CPython and the pipeline's packages via uv, all inside its own directory — no conda, no system Python."
+      },
+      {
+        "title": "Localisation predicted on your machine",
+        "body": "DeepLocPro predicts prokaryotic subcellular localisation locally, adding a localz column to the merged database."
+      },
+      {
+        "title": "Resumable, and scriptable",
+        "body": "Runs skip any step whose output already exists, so an interrupted build picks up where it stopped; batch mode takes a CSV of organisms in one go."
+      }
+    ],
+    "requirements": {
+      "os": {
+        "macOS": "Packaged .dmg build",
+        "Other": "Runs from source on any OS with Node.js 20+"
+      },
+      "hardware": {
+        "Disk": "Space for the private Python environment and each organism's output",
+        "Network": "Needed to set up on first launch and to query the annotation sources"
+      }
+    },
+    "tags": [
+      "bioinformatics",
+      "prokaryotes",
+      "genome annotation",
+      "kegg",
+      "uniprot"
+    ],
+    "icon": "/assets/img/apps/prokdb.png"
+  },
+  {
     "slug": "chemsketcher",
     "name": "ChemSketcher",
     "tagline": "Draw a molecule and watch its physicochemical properties compute live — an open-source sketchpad with an RDKit property table built in.",

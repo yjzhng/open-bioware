@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Currently available applications — Open Bioware</title>
-  <meta name="description" content="3 free, open-source desktop applications I built.">
+  <meta name="description" content="4 free, open-source desktop applications I built.">
   <link rel="canonical" href="https://yjzhng.github.io/open-bioware/apps/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Open Bioware">
   <meta property="og:title" content="Currently available applications — Open Bioware">
-  <meta property="og:description" content="3 free, open-source desktop applications I built.">
+  <meta property="og:description" content="4 free, open-source desktop applications I built.">
   <meta property="og:url" content="https://yjzhng.github.io/open-bioware/apps/">
   <meta property="og:image" content="https://yjzhng.github.io/open-bioware/assets/img/og.png">
   <meta property="og:image:width" content="1200">
@@ -18,7 +18,7 @@
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0b0f12" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="/open-bioware/assets/img/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/open-bioware/assets/css/site.css?v=11fffab8dc">
+  <link rel="stylesheet" href="/open-bioware/assets/css/site.css?v=8a7f95df1a">
   <script>(function(){try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}})()</script>
 </head>
 <body>
@@ -39,6 +39,7 @@
               <p class="mega__heading">Genomics &amp; Annotation</p>
               <ul>
                 <li><a href="/open-bioware/apps/uniome/"><span class="tile tile--app tile--xs"><img src="/open-bioware/assets/img/apps/uniome.png" alt="" width="64" height="64" decoding="async"></span>UniOme</a></li>
+                <li><a href="/open-bioware/apps/prokdb/"><span class="tile tile--app tile--xs"><img src="/open-bioware/assets/img/apps/prokdb.png" alt="" width="64" height="64" decoding="async"></span>prokDB</a></li>
               </ul>
             </div>
             <div class="mega__group">
@@ -49,7 +50,7 @@
               </ul>
             </div>
           </div>
-          <div class="mega__foot"><a href="/open-bioware/apps/">All 3 applications <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="arrow"><path d="M4.5 12h15m0 0-5.25-5.25M19.5 12l-5.25 5.25"/></svg></a></div>
+          <div class="mega__foot"><a href="/open-bioware/apps/">All 4 applications <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="arrow"><path d="M4.5 12h15m0 0-5.25-5.25M19.5 12l-5.25 5.25"/></svg></a></div>
         </div>
         </li>
         <li class="">
@@ -71,16 +72,24 @@
     <section class="section section--head">
       <div class="wrap center-block">
         <h1>Currently available applications</h1>
-        <p class="hero__lede">3 free, open-source desktop applications I built.</p>
+        <p class="hero__lede">4 free, open-source desktop applications I built.</p>
       </div>
     </section>
 
     <section class="section section--results">
       <div class="wrap">
         <div class="filters filters--center">
-          
+          <div class="search">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.75"/><path d="m20.25 20.25-4.9-4.9"/></svg>
+            <label class="visually-hidden" for="app-search">Search applications</label>
+            <input type="search" id="app-search" data-search placeholder="Search 4 applications…" autocomplete="off">
+          </div>
           <div class="filter-row">
-            
+            <ul class="chips" data-filters>
+              <li><button class="chip" type="button" aria-pressed="true" data-filter="all">All</button></li>
+              <li><button class="chip" type="button" aria-pressed="false" data-filter="genomics-annotation">Genomics &amp; Annotation</button></li>
+              <li><button class="chip" type="button" aria-pressed="false" data-filter="chemistry-cheminformatics">Chemistry &amp; Cheminformatics</button></li>
+            </ul>
             
           <div class="view-toggle" role="group" aria-label="Result layout">
             <button class="view-btn" type="button" data-view-btn="tile" aria-pressed="true" title="Tile view"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.75" y="3.75" width="6.75" height="6.75" rx="1.5"/><rect x="13.5" y="3.75" width="6.75" height="6.75" rx="1.5"/><rect x="3.75" y="13.5" width="6.75" height="6.75" rx="1.5"/><rect x="13.5" y="13.5" width="6.75" height="6.75" rx="1.5"/></svg><span class="visually-hidden">Tile view</span></button>
@@ -98,6 +107,19 @@
               <h3 class="item__title"><a href="/open-bioware/apps/uniome/" class="item__link">UniOme</a></h3>
               <p class="badge badge--accent item__cat">Genomics &amp; Annotation</p>
               <p class="item__blurb">A local-first annotation browser for prokaryotes — genes, structures, interactions, regulation and pathways, served entirely from files on your own machine.</p>
+              <ul class="badge-row item__badges"><li><span class="badge">macOS</span></li></ul>
+            </div>
+            <div class="item__foot">
+              <span class="item__meta">MIT</span>
+              <span class="item__actions"><span class="item__cta">View app <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="arrow"><path d="M4.5 12h15m0 0-5.25-5.25M19.5 12l-5.25 5.25"/></svg></span></span>
+            </div>
+          </li>
+          <li class="item" data-item data-accent="emerald" data-category="genomics-annotation" data-name="prokdb" data-blurb="prokdb build one merged gene-annotation table for any prokaryote — ncbi, uniprot and kegg integrated by a seven-step pipeline, as a desktop app or a command line. bioinformatics prokaryotes genome annotation kegg uniprot">
+            <span class="tile tile--logo item__tile"><img src="/open-bioware/assets/img/apps/prokdb.png" alt="" loading="lazy" decoding="async" width="64" height="64"></span>
+            <div class="item__body">
+              <h3 class="item__title"><a href="/open-bioware/apps/prokdb/" class="item__link">prokDB</a></h3>
+              <p class="badge badge--accent item__cat">Genomics &amp; Annotation</p>
+              <p class="item__blurb">Build one merged gene-annotation table for any prokaryote — NCBI, UniProt and KEGG integrated by a seven-step pipeline, as a desktop app or a command line.</p>
               <ul class="badge-row item__badges"><li><span class="badge">macOS</span></li></ul>
             </div>
             <div class="item__foot">
@@ -150,6 +172,7 @@
         <h4>Apps</h4>
         <ul>
           <li><a href="/open-bioware/apps/uniome/">UniOme</a></li>
+          <li><a href="/open-bioware/apps/prokdb/">prokDB</a></li>
           <li><a href="/open-bioware/apps/chemsketcher/">ChemSketcher</a></li>
           <li><a href="/open-bioware/apps/chemviewer/">ChemViewer</a></li>
           

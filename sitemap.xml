@@ -5,6 +5,7 @@
   <url><loc>https://yjzhng.github.io/open-bioware/software/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://yjzhng.github.io/open-bioware/about/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://yjzhng.github.io/open-bioware/apps/uniome/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://yjzhng.github.io/open-bioware/apps/prokdb/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://yjzhng.github.io/open-bioware/apps/chemsketcher/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://yjzhng.github.io/open-bioware/apps/chemviewer/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>

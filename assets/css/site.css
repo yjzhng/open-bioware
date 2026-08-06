@@ -55,6 +55,12 @@
   --shadow-sm: 0 1px 2px rgba(16, 21, 27, 0.04);
   --shadow: 0 1px 2px rgba(16, 21, 27, 0.04), 0 8px 24px -12px rgba(16, 21, 27, 0.14);
   --shadow-lg: 0 2px 4px rgba(16, 21, 27, 0.04), 0 18px 40px -18px rgba(16, 21, 27, 0.22);
+
+  /* App icons sit on the page with no plate behind them, so an icon with a
+     pale edge would otherwise dissolve into a light background. The tight
+     second shadow is the edge; the first gives it a little lift. */
+  --icon-shadow: drop-shadow(0 1px 3px rgba(16, 21, 27, 0.16))
+    drop-shadow(0 0 1px rgba(16, 21, 27, 0.22));
 }
 
 /* Dark */
@@ -82,6 +88,9 @@
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -12px rgba(0, 0, 0, 0.6);
     --shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.4), 0 18px 40px -18px rgba(0, 0, 0, 0.7);
+
+    --icon-shadow: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.55))
+      drop-shadow(0 0 1px rgba(0, 0, 0, 0.4));
   }
 }
 
@@ -108,6 +117,9 @@
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -12px rgba(0, 0, 0, 0.6);
   --shadow-lg: 0 2px 4px rgba(0, 0, 0, 0.4), 0 18px 40px -18px rgba(0, 0, 0, 0.7);
+
+  --icon-shadow: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.55))
+    drop-shadow(0 0 1px rgba(0, 0, 0, 0.4));
 }
 
 /* --- Base --------------------------------------------------------------- */
@@ -2039,4 +2051,25 @@ code, kbd, pre {
   width: 100%;
   height: 100%;
   object-fit: contain;
+  /* drop-shadow follows the alpha channel, so the shadow traces the icon's
+     rounded silhouette rather than boxing it. */
+  filter: var(--icon-shadow);
+}
+
+/* At header and footer sizes the same shadow reads as a smudge, so tighten it. */
+.tile--sm.tile--app img,
+.tile--xs.tile--app img {
+  filter: drop-shadow(0 1px 1.5px rgba(16, 21, 27, 0.18));
+}
+
+:root[data-theme="dark"] .tile--sm.tile--app img,
+:root[data-theme="dark"] .tile--xs.tile--app img {
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.6));
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .tile--sm.tile--app img,
+  :root:not([data-theme="light"]) .tile--xs.tile--app img {
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.6));
+  }
 }

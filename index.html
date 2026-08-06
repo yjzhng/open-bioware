@@ -49,8 +49,14 @@
                 <li><a href="/open-bioware/apps/chemviewer/"><span class="tile tile--app tile--xs"><img src="/open-bioware/assets/img/apps/chemviewer.png" alt="" width="64" height="64" decoding="async"></span>ChemViewer</a></li>
               </ul>
             </div>
+            <div class="mega__group">
+              <p class="mega__heading">Analysis &amp; Visualisation</p>
+              <ul>
+                <li><a href="/open-bioware/apps/omicexplorer/"><span class="tile tile--app tile--xs"><img src="/open-bioware/assets/img/apps/omicexplorer.png" alt="" width="64" height="64" decoding="async"></span>OmicExplorer</a></li>
+              </ul>
+            </div>
           </div>
-          <div class="mega__foot"><a href="/open-bioware/apps/">All 4 applications <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="arrow"><path d="M4.5 12h15m0 0-5.25-5.25M19.5 12l-5.25 5.25"/></svg></a></div>
+          <div class="mega__foot"><a href="/open-bioware/apps/">All 5 applications <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="arrow"><path d="M4.5 12h15m0 0-5.25-5.25M19.5 12l-5.25 5.25"/></svg></a></div>
         </div>
         </li>
         <li class="">
@@ -101,6 +107,10 @@
           <a class="dock-app" href="#app-chemviewer" data-tab="chemviewer" aria-selected="false" data-accent="violet">
             <span class="tile tile--app "><img src="/open-bioware/assets/img/apps/chemviewer.png" alt="" width="64" height="64" decoding="async"></span>
             <span class="dock-app__name">ChemViewer</span>
+          </a>
+          <a class="dock-app" href="#app-omicexplorer" data-tab="omicexplorer" aria-selected="false" data-accent="amber">
+            <span class="tile tile--app "><img src="/open-bioware/assets/img/apps/omicexplorer.png" alt="" width="64" height="64" decoding="async"></span>
+            <span class="dock-app__name">OmicExplorer</span>
           </a>
           </div>
           <div data-app-panels>
@@ -197,10 +207,33 @@
             <li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="check"><path d="m4.5 12.75 5.25 5.25L19.5 6.75"/></svg><span><strong>Sketch to search</strong>An embedded Ketcher canvas lets you draw a substructure and filter the library by it.</span></li>
           </ul>
         </section>
+        <section class="switcher-panel" id="app-omicexplorer" data-panel="omicexplorer" data-accent="amber" aria-label="OmicExplorer">
+          <div>
+            <span class="tile tile--app tile--lg"><img src="/open-bioware/assets/img/apps/omicexplorer.png" alt="" width="64" height="64" decoding="async"></span>
+            <h3 class="feature__title">OmicExplorer</h3>
+            <p class="switcher-panel__lede">Explore omic data end to end — chain the analysis together on a flow canvas and read the result in linked interactive plots, computed inside the app.</p>
+            <ul class="badge-row" style="margin-top:1.1rem">
+              <li><span class="badge badge--accent">Analysis &amp; Visualisation</span></li>
+              <li><span class="badge">macOS</span></li>
+              <li><span class="badge badge--mono">MIT</span></li>
+            </ul>
+            <p class="switcher-panel__summary">OmicExplorer takes a sample × gene or protein matrix and lets you build the analysis as a diagram: standardisation, comparison and contrast, and plotting are nodes you chain together on a canvas, so the route from raw table to figure stays visible and can be rearranged at any point.</p>
+            <div class="feature__actions">
+              <a class="btn btn--primary" href="/open-bioware/apps/omicexplorer/">Visit OmicExplorer <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="arrow"><path d="M4.5 12h15m0 0-5.25-5.25M19.5 12l-5.25 5.25"/></svg></a>
+              <a class="btn btn--secondary" href="https://github.com/yjzhng/OmicExplorer/releases/latest" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5"/><path d="M3 16.5v1.5a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3v-1.5"/></svg> Download latest release</a>
+            </div>
+          </div>
+          <ul class="feature__list">
+            <li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="check"><path d="m4.5 12.75 5.25 5.25L19.5 6.75"/></svg><span><strong>The pipeline is the canvas</strong>Chain standardisation, comparison and plotting as nodes on a flow editor, so the analysis reads as a diagram rather than a buried sequence of settings.</span></li>
+            <li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="check"><path d="m4.5 12.75 5.25 5.25L19.5 6.75"/></svg><span><strong>Statistics built in</strong>Clean-up by detection rate, vehicle normalisation, direct comparisons, two-way ANOVA and correlated contrasts, applied across strain, dose and time.</span></li>
+            <li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="check"><path d="m4.5 12.75 5.25 5.25L19.5 6.75"/></svg><span><strong>Plots that talk to each other</strong>Hovering or selecting in one panel highlights the same features everywhere else, over a dashboard of tiles you arrange yourself.</span></li>
+            <li><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="check"><path d="m4.5 12.75 5.25 5.25L19.5 6.75"/></svg><span><strong>No runtime to install</strong>The engine is pure TypeScript running in the app — no Python environment and no external service to reach for.</span></li>
+          </ul>
+        </section>
           </div>
         </div>
 
-        <div class="hero__actions" style="justify-content:center"><a class="btn btn--secondary" href="/open-bioware/apps/">View all 4 applications <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="arrow"><path d="M4.5 12h15m0 0-5.25-5.25M19.5 12l-5.25 5.25"/></svg></a></div>
+        <div class="hero__actions" style="justify-content:center"><a class="btn btn--secondary" href="/open-bioware/apps/">View all 5 applications <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="arrow"><path d="M4.5 12h15m0 0-5.25-5.25M19.5 12l-5.25 5.25"/></svg></a></div>
       </div>
     </section>
 
@@ -289,6 +322,7 @@
           <li><a href="/open-bioware/apps/prokdb/">prokDB</a></li>
           <li><a href="/open-bioware/apps/chemsketcher/">ChemSketcher</a></li>
           <li><a href="/open-bioware/apps/chemviewer/">ChemViewer</a></li>
+          <li><a href="/open-bioware/apps/omicexplorer/">OmicExplorer</a></li>
           
         </ul>
       </div>

@@ -225,5 +225,61 @@
       "umap"
     ],
     "icon": "/assets/img/apps/chemviewer.png"
+  },
+  {
+    "slug": "omicexplorer",
+    "name": "OmicExplorer",
+    "tagline": "Explore omic data end to end — chain the analysis together on a flow canvas and read the result in linked interactive plots, computed inside the app.",
+    "category": "Analysis & Visualisation",
+    "repo": "yjzhng/OmicExplorer",
+    "license": "MIT",
+    "language": "TypeScript",
+    "platforms": [
+      "macOS"
+    ],
+    "accent": "amber",
+    "download": {
+      "type": "github"
+    },
+    "summary": [
+      "OmicExplorer takes a sample × gene or protein matrix and lets you build the analysis as a diagram: standardisation, comparison and contrast, and plotting are nodes you chain together on a canvas, so the route from raw table to figure stays visible and can be rearranged at any point.",
+      "The results open in a dashboard of interactive panels — volcano, MA, heatmap, bubble, dumbbell, dose- and time-response, and PCA, UMAP or t-SNE clustering — with hover and selection linked across every panel. Tiles can be dragged and resized, any panel exports to PNG or PDF, and any table to CSV or XLSX."
+    ],
+    "highlights": [
+      {
+        "title": "The pipeline is the canvas",
+        "body": "Chain standardisation, comparison and plotting as nodes on a flow editor, so the analysis reads as a diagram rather than a buried sequence of settings."
+      },
+      {
+        "title": "Statistics built in",
+        "body": "Clean-up by detection rate, vehicle normalisation, direct comparisons, two-way ANOVA and correlated contrasts, applied across strain, dose and time."
+      },
+      {
+        "title": "Plots that talk to each other",
+        "body": "Hovering or selecting in one panel highlights the same features everywhere else, over a dashboard of tiles you arrange yourself."
+      },
+      {
+        "title": "No runtime to install",
+        "body": "The engine is pure TypeScript running in the app — no Python environment and no external service to reach for."
+      }
+    ],
+    "requirements": {
+      "os": {
+        "macOS": "Apple silicon (arm64) or Intel (x64) — packaged builds",
+        "Other": "Runs from source on any OS with Node.js, in the browser"
+      },
+      "hardware": {
+        "Memory": "The engine works in memory, so a large matrix wants headroom",
+        "Data": "A project folder holding your data, samplesheet and gene database as CSVs"
+      }
+    },
+    "tags": [
+      "omics",
+      "transcriptomics",
+      "proteomics",
+      "differential expression",
+      "data visualisation"
+    ],
+    "icon": "/assets/img/apps/omicexplorer.png"
   }
 ]

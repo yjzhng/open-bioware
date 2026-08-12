@@ -1,5 +1,118 @@
 [
   {
+    "slug": "biographer",
+    "name": "BioGrapher",
+    "tagline": "Paste your data, tag what it means, and plot it — a spreadsheet, twenty-odd chart types and drag-to-place significance brackets in one window.",
+    "category": "Analysis & Visualisation",
+    "repo": "yjzhng/BioGrapher",
+    "license": "MIT",
+    "language": "TypeScript",
+    "platforms": [
+      "macOS",
+      "Windows"
+    ],
+    "accent": "rose",
+    "download": {
+      "type": "github"
+    },
+    "summary": [
+      "BioGrapher is a plotting app for biologists that borrows from three tools at once: the matrix handling of a spreadsheet, the interactive control of GraphPad Prism, and the systematic, repeatable styling of matplotlib. Paste data into an Excel-style grid with formulas, tag the matrix to say what its rows and columns mean, and one click standardises it into a long table that is immediately plottable.",
+      "From there the plot is shaped by direct manipulation — split by condition, filter to a slice, recolour a series, or drag across the groups you want compared to place a significance bracket. Figures assemble into multi-page layouts and copy or export as editable SVG or PNG."
+    ],
+    "highlights": [
+      {
+        "title": "A grid that knows your design",
+        "body": "Tag the data matrix to describe its shape, and standardisation into a plottable long table becomes one click rather than a manual reshape."
+      },
+      {
+        "title": "Twenty-plus chart types",
+        "body": "Scatter, bars, box and violin, heatmaps, 3D and survival curves, plus curve fitting for dose-response, Michaelis–Menten and binding."
+      },
+      {
+        "title": "Significance you drag into place",
+        "body": "Select the groups to compare by dragging across them and the test's brackets are drawn in publication style."
+      },
+      {
+        "title": "Exports stay editable",
+        "body": "Plots are rendered as hand-written SVG, so a figure exported as vector can still be edited in a drawing program afterwards."
+      }
+    ],
+    "requirements": {
+      "os": {
+        "macOS": "Apple silicon (arm64) — packaged build",
+        "Windows": "Packaged installer (.exe)",
+        "Other": "Runs from source with Node.js 20+, Python 3.12 and uv"
+      },
+      "hardware": {
+        "Disk": "Space for the bundled Python data engine"
+      }
+    },
+    "tags": [
+      "data visualisation",
+      "plotting",
+      "statistics",
+      "figures",
+      "curve fitting"
+    ],
+    "icon": "/assets/img/apps/biographer.png"
+  },
+  {
+    "slug": "omicexplorer",
+    "name": "OmicExplorer",
+    "tagline": "Explore omic data end to end — chain the analysis together on a flow canvas and read the result in linked interactive plots, computed inside the app.",
+    "category": "Analysis & Visualisation",
+    "repo": "yjzhng/OmicExplorer",
+    "license": "MIT",
+    "language": "TypeScript",
+    "platforms": [
+      "macOS"
+    ],
+    "accent": "amber",
+    "download": {
+      "type": "github"
+    },
+    "summary": [
+      "OmicExplorer takes a sample × gene or protein matrix and lets you build the analysis as a diagram: standardisation, comparison and contrast, and plotting are nodes you chain together on a canvas, so the route from raw table to figure stays visible and can be rearranged at any point.",
+      "The results open in a dashboard of interactive panels — volcano, MA, heatmap, bubble, dumbbell, dose- and time-response, and PCA, UMAP or t-SNE clustering — with hover and selection linked across every panel. Tiles can be dragged and resized, any panel exports to PNG or PDF, and any table to CSV or XLSX."
+    ],
+    "highlights": [
+      {
+        "title": "The pipeline is the canvas",
+        "body": "Chain standardisation, comparison and plotting as nodes on a flow editor, so the analysis reads as a diagram rather than a buried sequence of settings."
+      },
+      {
+        "title": "Statistics built in",
+        "body": "Clean-up by detection rate, vehicle normalisation, direct comparisons, two-way ANOVA and correlated contrasts, applied across strain, dose and time."
+      },
+      {
+        "title": "Plots that talk to each other",
+        "body": "Hovering or selecting in one panel highlights the same features everywhere else, over a dashboard of tiles you arrange yourself."
+      },
+      {
+        "title": "No runtime to install",
+        "body": "The engine is pure TypeScript running in the app — no Python environment and no external service to reach for."
+      }
+    ],
+    "requirements": {
+      "os": {
+        "macOS": "Apple silicon (arm64) or Intel (x64) — packaged builds",
+        "Other": "Runs from source on any OS with Node.js, in the browser"
+      },
+      "hardware": {
+        "Memory": "The engine works in memory, so a large matrix wants headroom",
+        "Data": "A project folder holding your data, samplesheet and gene database as CSVs"
+      }
+    },
+    "tags": [
+      "omics",
+      "transcriptomics",
+      "proteomics",
+      "differential expression",
+      "data visualisation"
+    ],
+    "icon": "/assets/img/apps/omicexplorer.png"
+  },
+  {
     "slug": "uniome",
     "name": "UniOme",
     "tagline": "A local-first annotation browser for prokaryotes — genes, structures, interactions, regulation and pathways, served entirely from files on your own machine.",
@@ -115,62 +228,6 @@
     "icon": "/assets/img/apps/prokdb.png"
   },
   {
-    "slug": "chemsketcher",
-    "name": "ChemSketcher",
-    "tagline": "Draw a molecule and watch its physicochemical properties compute live — an open-source sketchpad with an RDKit property table built in.",
-    "category": "Chemistry & Cheminformatics",
-    "repo": "yjzhng/ChemSketcher",
-    "license": "MIT",
-    "language": "TypeScript",
-    "platforms": [
-      "macOS"
-    ],
-    "accent": "indigo",
-    "download": {
-      "type": "github"
-    },
-    "summary": [
-      "ChemSketcher is a desktop molecule sketchpad built on EPAM Ketcher, paired with an interactive table that computes physicochemical properties with RDKit as you draw. Sketch a structure or paste a SMILES string and the numbers appear beside it, with no round-trip to a web service.",
-      "Every distinct molecule on the canvas is recognised automatically and gets its own row, so you can compare a series side by side while you are still drawing it."
-    ],
-    "highlights": [
-      {
-        "title": "Properties as you draw",
-        "body": "SMILES, molecular weight, logP, TPSA, hydrogen-bond donors and acceptors, ring counts, QED and InChIKey, computed live by RDKit."
-      },
-      {
-        "title": "Each molecule found automatically",
-        "body": "Draw several structures on one canvas and each distinct molecule is detected and given its own row in the table."
-      },
-      {
-        "title": "Reads and writes the usual formats",
-        "body": "Open and save .mol, .sdf, .ket and .smi files directly, so it fits whatever your pipeline already uses."
-      },
-      {
-        "title": "A layout you control",
-        "body": "Choose which properties to show, move or hide the table, and drag the divider to give the canvas the room it needs."
-      }
-    ],
-    "requirements": {
-      "os": {
-        "macOS": "Apple silicon (arm64) or Intel (x64) — packaged builds",
-        "Other": "Runs from source on any OS with Node.js"
-      },
-      "hardware": {
-        "Disk": "~1 GB for the bundled chemistry engine",
-        "Network": "Needed once, on first launch"
-      }
-    },
-    "tags": [
-      "cheminformatics",
-      "rdkit",
-      "ketcher",
-      "smiles",
-      "molecule editor"
-    ],
-    "icon": "/assets/img/apps/chemsketcher.png"
-  },
-  {
     "slug": "chemviewer",
     "name": "ChemViewer",
     "tagline": "Explore chemical libraries interactively — compound properties, distribution statistics and side-by-side comparison, all computed locally.",
@@ -227,59 +284,59 @@
     "icon": "/assets/img/apps/chemviewer.png"
   },
   {
-    "slug": "omicexplorer",
-    "name": "OmicExplorer",
-    "tagline": "Explore omic data end to end — chain the analysis together on a flow canvas and read the result in linked interactive plots, computed inside the app.",
-    "category": "Analysis & Visualisation",
-    "repo": "yjzhng/OmicExplorer",
+    "slug": "chemsketcher",
+    "name": "ChemSketcher",
+    "tagline": "Draw a molecule and watch its physicochemical properties compute live — an open-source sketchpad with an RDKit property table built in.",
+    "category": "Chemistry & Cheminformatics",
+    "repo": "yjzhng/ChemSketcher",
     "license": "MIT",
     "language": "TypeScript",
     "platforms": [
       "macOS"
     ],
-    "accent": "amber",
+    "accent": "indigo",
     "download": {
       "type": "github"
     },
     "summary": [
-      "OmicExplorer takes a sample × gene or protein matrix and lets you build the analysis as a diagram: standardisation, comparison and contrast, and plotting are nodes you chain together on a canvas, so the route from raw table to figure stays visible and can be rearranged at any point.",
-      "The results open in a dashboard of interactive panels — volcano, MA, heatmap, bubble, dumbbell, dose- and time-response, and PCA, UMAP or t-SNE clustering — with hover and selection linked across every panel. Tiles can be dragged and resized, any panel exports to PNG or PDF, and any table to CSV or XLSX."
+      "ChemSketcher is a desktop molecule sketchpad built on EPAM Ketcher, paired with an interactive table that computes physicochemical properties with RDKit as you draw. Sketch a structure or paste a SMILES string and the numbers appear beside it, with no round-trip to a web service.",
+      "Every distinct molecule on the canvas is recognised automatically and gets its own row, so you can compare a series side by side while you are still drawing it."
     ],
     "highlights": [
       {
-        "title": "The pipeline is the canvas",
-        "body": "Chain standardisation, comparison and plotting as nodes on a flow editor, so the analysis reads as a diagram rather than a buried sequence of settings."
+        "title": "Properties as you draw",
+        "body": "SMILES, molecular weight, logP, TPSA, hydrogen-bond donors and acceptors, ring counts, QED and InChIKey, computed live by RDKit."
       },
       {
-        "title": "Statistics built in",
-        "body": "Clean-up by detection rate, vehicle normalisation, direct comparisons, two-way ANOVA and correlated contrasts, applied across strain, dose and time."
+        "title": "Each molecule found automatically",
+        "body": "Draw several structures on one canvas and each distinct molecule is detected and given its own row in the table."
       },
       {
-        "title": "Plots that talk to each other",
-        "body": "Hovering or selecting in one panel highlights the same features everywhere else, over a dashboard of tiles you arrange yourself."
+        "title": "Reads and writes the usual formats",
+        "body": "Open and save .mol, .sdf, .ket and .smi files directly, so it fits whatever your pipeline already uses."
       },
       {
-        "title": "No runtime to install",
-        "body": "The engine is pure TypeScript running in the app — no Python environment and no external service to reach for."
+        "title": "A layout you control",
+        "body": "Choose which properties to show, move or hide the table, and drag the divider to give the canvas the room it needs."
       }
     ],
     "requirements": {
       "os": {
         "macOS": "Apple silicon (arm64) or Intel (x64) — packaged builds",
-        "Other": "Runs from source on any OS with Node.js, in the browser"
+        "Other": "Runs from source on any OS with Node.js"
       },
       "hardware": {
-        "Memory": "The engine works in memory, so a large matrix wants headroom",
-        "Data": "A project folder holding your data, samplesheet and gene database as CSVs"
+        "Disk": "~1 GB for the bundled chemistry engine",
+        "Network": "Needed once, on first launch"
       }
     },
     "tags": [
-      "omics",
-      "transcriptomics",
-      "proteomics",
-      "differential expression",
-      "data visualisation"
+      "cheminformatics",
+      "rdkit",
+      "ketcher",
+      "smiles",
+      "molecule editor"
     ],
-    "icon": "/assets/img/apps/omicexplorer.png"
+    "icon": "/assets/img/apps/chemsketcher.png"
   }
 ]

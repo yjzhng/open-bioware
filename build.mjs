@@ -124,6 +124,14 @@ async function main() {
     readJson("data/content.json"),
   ]);
 
+  // Snapshot of each app's newest release, refreshed by
+  // `node scripts/fetch-releases.mjs`. Optional: without it the pages simply
+  // fall back to asking the GitHub API in the browser. The build never fetches
+  // it itself, so the same inputs always produce the same HTML.
+  const releases = existsSync(join(root, "data/releases.json"))
+    ? await readJson("data/releases.json")
+    : {};
+
   // Page prose lives in data/content.json; templates read it from here so the
   // render functions need no extra parameter threaded through every call.
   site.content = content;
@@ -163,7 +171,7 @@ async function main() {
   written.push(await write("404.html", render404(site, apps, directory)));
 
   for (const app of apps) {
-    written.push(await write(`apps/${app.slug}/index.html`, renderApp(site, app, apps)));
+    written.push(await write(`apps/${app.slug}/index.html`, renderApp(site, app, apps, releases[app.slug])));
   }
 
   // sitemap + robots
@@ -199,6 +207,13 @@ ${routes
         `Replace ${n === 1 ? "it" : "them"} with your own apps.`
     );
   }
+
+  const seeded = apps.filter((a) => releases[a.slug]);
+  console.log(
+    `\n  Release snapshot: ${seeded.length}/${apps.length} apps` +
+      (seeded.length ? ` (${seeded.map((a) => `${a.name} ${releases[a.slug].tag_name}`).join(", ")})` : "") +
+      (seeded.length < apps.length ? " — run node scripts/fetch-releases.mjs to refresh" : "")
+  );
 
   console.log(`\n  Asset versions: css ${site.assets.css} · js ${site.assets.js}`);
   console.log(`\n  Primary download targets:`);

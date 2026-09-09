@@ -66,6 +66,7 @@
     "downloadShort": "Download",
     "downloadMenuTitle": "Choose a build",
     "downloadMenuAll": "See all files for this release",
+    "downloadNoMatch": "Cannot find matched build for the platform. Check source",
     "sourceCode": "Source code",
     "versionHistory": "Version history",
     "reportIssue": "Report an issue",

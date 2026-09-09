@@ -1749,6 +1749,35 @@ code, kbd, pre {
   border-bottom-right-radius: 0;
 }
 
+/* The label stacks "Download v1.2.3" over the build it resolved to. Until
+   site.js names a build the second line is empty and collapses, leaving the
+   single-line button the server rendered. */
+.dl__icon { display: inline-flex; }
+
+.dl__text {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+}
+
+/* .btn sets nowrap, which a long second line cannot honour on a phone without
+   pushing the page sideways. Let this line wrap, and let the control shrink,
+   so it stays inside the viewport whatever the message says. */
+.dl { max-width: 100%; }
+.dl__main { min-width: 0; }
+.dl__text { min-width: 0; }
+
+.dl__sub {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  opacity: 0.85;
+  white-space: normal;
+}
+
+.dl__sub:empty { display: none; }
+
 .dl__toggle {
   padding-inline: 0.7rem;
   border-top-left-radius: 0;

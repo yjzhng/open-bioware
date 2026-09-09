@@ -258,7 +258,7 @@ const appHeader = (site, app, sections) => {
         : ""
     }
     <div class="header-actions"${sections.length ? "" : ' style="margin-left:auto"'}>
-      <a class="btn btn--primary btn--sm" href="${attr(downloadUrl(app))}" rel="noopener">${icons.download(15)} ${esc(copy.downloadShort)}</a>
+      <a class="btn btn--primary btn--sm" href="${attr(downloadUrl(app))}" rel="noopener"${usesGithubReleases(app) ? ` data-dl-quick data-repo="${attr(app.repo)}"` : ""}>${icons.download(15)} ${esc(copy.downloadShort)}</a>
       ${app.repo ? `<a class="icon-btn" href="https://github.com/${attr(app.repo)}" aria-label="${attr(app.name)} source code" rel="noopener">${icons.github(17)}</a>` : ""}
       ${themeToggle()}
     </div>
@@ -353,6 +353,27 @@ export const downloadUrl = (app) => {
   if (d.type === "package") return d.url || `https://github.com/${app.repo}`;
   return `https://github.com/${app.repo}/releases/latest`;
 };
+
+/** "0.2.0" and "v0.2.0" both render as "v0.2.0"; nothing renders as "". */
+export const releaseVersion = (release) => {
+  const tag = (release && release.tag_name) || "";
+  return tag ? (/^v/i.test(tag) ? tag : "v" + tag) : "";
+};
+
+/** Fixed locale: the build must be deterministic. site.js re-renders this in
+ *  the visitor's own locale once it runs. */
+const releaseDate = (release) => {
+  const when = (release && release.published_at) || "";
+  if (!when) return "";
+  const d = new Date(when);
+  return Number.isNaN(d.valueOf())
+    ? ""
+    : d.toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "numeric" });
+};
+
+/** True when the newest GitHub release supplies the actual download. */
+export const usesGithubReleases = (app) =>
+  (app.download?.type ?? "github") === "github" && !!app.repo;
 
 const downloadLabel = (app, copy) => {
   const d = app.download || { type: "github" };
@@ -470,20 +491,23 @@ const requirementPanel = (requirements, copy) => {
 
 /**
  * Download control. For GitHub-hosted releases this is a split button: the
- * main half always points at /releases/latest, and the caret opens a menu that
- * site.js fills with the actual per-platform assets of the newest release.
- * With no JavaScript the menu still lists the release page, so nothing is lost.
+ * main half is rendered pointing at /releases/latest, then site.js names the
+ * version and re-aims it at the build matching the visitor's platform. The
+ * caret opens a menu of every asset in the newest release. With no JavaScript
+ * both halves still lead to the release page, so nothing is lost.
  */
-const downloadControl = (app, copy) => {
+const downloadControl = (app, copy, release) => {
   const dl = app.download || { type: "github" };
   const href = downloadUrl(app);
+  const version = releaseVersion(release);
+  const label = version ? `${copy.downloadShort} ${version}` : downloadLabel(app, copy);
 
   if (dl.type !== "github" || !app.repo) {
     return `<a class="btn btn--primary btn--lg" href="${attr(href)}" rel="noopener">${icons.download(17)} ${esc(downloadLabel(app, copy))}</a>`;
   }
 
-  return `<div class="dl" data-download data-repo="${attr(app.repo)}">
-            <a class="btn btn--primary btn--lg dl__main" href="${attr(href)}" rel="noopener">${icons.download(17)} ${esc(downloadLabel(app, copy))}</a>
+  return `<div class="dl" data-download data-repo="${attr(app.repo)}" data-dl-word="${attr(copy.downloadShort)}" data-dl-nomatch="${attr(copy.downloadNoMatch)}">
+            <a class="btn btn--primary btn--lg dl__main" href="${attr(href)}" rel="noopener" data-dl-main><span class="dl__icon">${icons.download(17)}</span> <span class="dl__text"><span data-dl-label>${esc(label)}</span><span class="dl__sub" data-dl-sub></span></span></a>
             <button class="btn btn--primary btn--lg dl__toggle" type="button" data-download-toggle aria-expanded="false" aria-label="Choose a platform">${icons.caret(13)}</button>
             <div class="dl__menu" data-download-menu hidden>
               <p class="dl__title">${esc(copy.downloadMenuTitle)}</p>
@@ -745,7 +769,7 @@ export function renderAppsIndex(site, apps, directory) {
 
 /* --- app microsite ------------------------------------------------------ */
 
-export function renderApp(site, app, apps) {
+export function renderApp(site, app, apps, release) {
   const dl = app.download || { type: "github" };
   const siblings = apps.filter((a) => a.slug !== app.slug);
 
@@ -781,18 +805,27 @@ export function renderApp(site, app, apps) {
         <h1 class="app-hero__title">${esc(app.name)}</h1>
         <p class="app-hero__tagline">${esc(app.tagline)}</p>
         <div class="app-hero__actions">
-          ${downloadControl(app, copy)}
+          ${downloadControl(app, copy, release)}
           ${app.repo ? `<a class="btn btn--secondary btn--sm" href="https://github.com/${attr(app.repo)}" rel="noopener">${icons.github(14)} ${esc(copy.sourceCode)}</a>` : ""}
           ${app.repo ? `<a class="btn btn--secondary btn--sm" href="https://github.com/${attr(app.repo)}/releases" rel="noopener">${icons.tag(14)} ${esc(copy.versionHistory)}</a>` : ""}
           ${app.repo ? `<a class="btn btn--secondary btn--sm" href="https://github.com/${attr(app.repo)}/issues" rel="noopener">${icons.info(14)} ${esc(copy.reportIssue)}</a>` : ""}
         </div>
         ${
           dl.type === "github" && app.repo
-            ? `<p class="release-meta" data-release data-repo="${attr(app.repo)}"></p>`
+            ? `<p class="release-meta" data-release data-repo="${attr(app.repo)}">${esc(
+                [releaseVersion(release) && `Latest release ${releaseVersion(release)}`, releaseDate(release)]
+                  .filter(Boolean)
+                  .join(" · ")
+              )}</p>`
             : `<p class="release-meta">${esc(dl.note || copy.officialNote)}</p>`
         }
       </div>
     </section>
+    ${
+      release
+        ? `<script type="application/json" data-release-seed>${JSON.stringify(release).replace(/</g, "\\u003c")}</script>`
+        : ""
+    }
 
     <div class="wrap">
       <div class="app-layout">
@@ -828,8 +861,8 @@ export function renderApp(site, app, apps) {
             <div><dt>${esc(copy.specPrice)}</dt><dd>${esc(copy.specPriceValue)}</dd></div>
             ${
               dl.type === "github" && app.repo
-                ? `<div><dt>${esc(copy.specVersion)}</dt><dd data-release-version data-repo="${attr(app.repo)}">—</dd></div>
-            <div><dt>${esc(copy.specReleased)}</dt><dd data-release-date>—</dd></div>`
+                ? `<div><dt>${esc(copy.specVersion)}</dt><dd data-release-version data-repo="${attr(app.repo)}">${esc(releaseVersion(release) || "—")}</dd></div>
+            <div><dt>${esc(copy.specReleased)}</dt><dd data-release-date>${esc(releaseDate(release) || "—")}</dd></div>`
                 : ""
             }
             </dl>

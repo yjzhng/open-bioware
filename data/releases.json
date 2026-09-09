@@ -1,0 +1,109 @@
+{
+  "biographer": {
+    "tag_name": "v0.2.0",
+    "published_at": "2026-08-27T00:51:02Z",
+    "html_url": "https://github.com/yjzhng/BioGrapher/releases/tag/v0.2.0",
+    "assets": [
+      {
+        "name": "BioGrapher-0.2.0-arm64.dmg",
+        "browser_download_url": "https://github.com/yjzhng/BioGrapher/releases/download/v0.2.0/BioGrapher-0.2.0-arm64.dmg",
+        "size": 218681021
+      },
+      {
+        "name": "BioGrapher-0.2.0-x64.dmg",
+        "browser_download_url": "https://github.com/yjzhng/BioGrapher/releases/download/v0.2.0/BioGrapher-0.2.0-x64.dmg",
+        "size": 183895295
+      },
+      {
+        "name": "BioGrapher.Setup.0.2.0.exe",
+        "browser_download_url": "https://github.com/yjzhng/BioGrapher/releases/download/v0.2.0/BioGrapher.Setup.0.2.0.exe",
+        "size": 204216893
+      }
+    ]
+  },
+  "chemsketcher": {
+    "tag_name": "v0.2.0",
+    "published_at": "2026-07-26T23:57:02Z",
+    "html_url": "https://github.com/yjzhng/ChemSketcher/releases/tag/v0.2.0",
+    "assets": [
+      {
+        "name": "ChemSketcher-0.2.0-arm64.dmg",
+        "browser_download_url": "https://github.com/yjzhng/ChemSketcher/releases/download/v0.2.0/ChemSketcher-0.2.0-arm64.dmg",
+        "size": 105157197
+      },
+      {
+        "name": "ChemSketcher-0.2.0-x64.dmg",
+        "browser_download_url": "https://github.com/yjzhng/ChemSketcher/releases/download/v0.2.0/ChemSketcher-0.2.0-x64.dmg",
+        "size": 112000975
+      }
+    ]
+  },
+  "chemviewer": {
+    "tag_name": "v0.2.0",
+    "published_at": "2026-08-04T23:18:27Z",
+    "html_url": "https://github.com/yjzhng/ChemViewer/releases/tag/v0.2.0",
+    "assets": [
+      {
+        "name": "ChemViewer-0.2.0-arm64.dmg",
+        "browser_download_url": "https://github.com/yjzhng/ChemViewer/releases/download/v0.2.0/ChemViewer-0.2.0-arm64.dmg",
+        "size": 143260858
+      }
+    ]
+  },
+  "omicexplorer": {
+    "tag_name": "v0.3.0",
+    "published_at": "2026-09-04T18:51:44Z",
+    "html_url": "https://github.com/yjzhng/OmicExplorer/releases/tag/v0.3.0",
+    "assets": [
+      {
+        "name": "OmicExplorer-0.3.0-arm64.dmg",
+        "browser_download_url": "https://github.com/yjzhng/OmicExplorer/releases/download/v0.3.0/OmicExplorer-0.3.0-arm64.dmg",
+        "size": 102499243
+      },
+      {
+        "name": "OmicExplorer-0.3.0-x64.dmg",
+        "browser_download_url": "https://github.com/yjzhng/OmicExplorer/releases/download/v0.3.0/OmicExplorer-0.3.0-x64.dmg",
+        "size": 109686540
+      },
+      {
+        "name": "OmicExplorer-0.3.0-x64.exe",
+        "browser_download_url": "https://github.com/yjzhng/OmicExplorer/releases/download/v0.3.0/OmicExplorer-0.3.0-x64.exe",
+        "size": 86024484
+      }
+    ]
+  },
+  "prokdb": {
+    "tag_name": "v0.1.0",
+    "published_at": "2026-08-06T10:53:27Z",
+    "html_url": "https://github.com/yjzhng/prokDB/releases/tag/v0.1.0",
+    "assets": [
+      {
+        "name": "prokDB-0.1.0-arm64.dmg",
+        "browser_download_url": "https://github.com/yjzhng/prokDB/releases/download/v0.1.0/prokDB-0.1.0-arm64.dmg",
+        "size": 98944282
+      },
+      {
+        "name": "prokDB-0.1.0-x64.dmg",
+        "browser_download_url": "https://github.com/yjzhng/prokDB/releases/download/v0.1.0/prokDB-0.1.0-x64.dmg",
+        "size": 103877204
+      }
+    ]
+  },
+  "uniome": {
+    "tag_name": "v0.2.0",
+    "published_at": "2026-08-04T23:32:08Z",
+    "html_url": "https://github.com/yjzhng/UniOme/releases/tag/v0.2.0",
+    "assets": [
+      {
+        "name": "UniOme-0.2.0-arm64.dmg",
+        "browser_download_url": "https://github.com/yjzhng/UniOme/releases/download/v0.2.0/UniOme-0.2.0-arm64.dmg",
+        "size": 99472317
+      },
+      {
+        "name": "UniOme-0.2.0-x64.dmg",
+        "browser_download_url": "https://github.com/yjzhng/UniOme/releases/download/v0.2.0/UniOme-0.2.0-x64.dmg",
+        "size": 106306046
+      }
+    ]
+  }
+}

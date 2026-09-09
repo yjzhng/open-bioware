@@ -42,42 +42,6 @@
     });
   }
 
-  // Collect every element that needs release info, grouped by repository so a
-  // page with several references to one repo still makes a single request.
-  var byRepo = {};
-  document.querySelectorAll("[data-repo]").forEach(function (el) {
-    var repo = el.getAttribute("data-repo");
-    if (!repo) return;
-    (byRepo[repo] = byRepo[repo] || []).push(el);
-  });
-
-  Object.keys(byRepo).forEach(function (repo) {
-    fetchRelease(repo)
-      .then(function (release) {
-        var tag = release.tag_name || "";
-        var when = release.published_at ? dateFmt.format(new Date(release.published_at)) : "";
-
-        byRepo[repo].forEach(function (el) {
-          if (el.hasAttribute("data-download")) {
-            fillDownloadMenu(el, release);
-          } else if (el.hasAttribute("data-release-version")) {
-            el.textContent = tag || "—";
-            var dateCell = document.querySelector("[data-release-date]");
-            if (dateCell && when) dateCell.textContent = when;
-          } else if (el.hasAttribute("data-release") || el.hasAttribute("data-release-line")) {
-            var parts = [];
-            if (tag) parts.push("Latest release " + tag);
-            if (when) parts.push(when);
-            el.textContent = parts.join(" · ");
-          }
-        });
-      })
-      .catch(function () {
-        // Offline, rate-limited, or no published release: the server-rendered
-        // fallback text stays exactly as it is.
-      });
-  });
-
   /* --- home page app switcher ------------------------------------------- */
 
   // Server-rendered markup stacks every panel, so the page is complete without
@@ -479,12 +443,9 @@
     return null;
   }
 
-  function fillDownloadMenu(wrap, release) {
-    var list = wrap.querySelector("[data-download-list]");
-    if (!list || !release.assets || !release.assets.length) return;
-
+  function bucketAssets(release) {
     var buckets = {};
-    release.assets.forEach(function (asset) {
+    (release.assets || []).forEach(function (asset) {
       var lower = (asset.name || "").toLowerCase();
       if (isNoise(lower)) return;
       var os = osOf(lower);
@@ -496,6 +457,95 @@
         size: humanSize(asset.size),
       });
     });
+    return buckets;
+  }
+
+  // CPU architecture is only reported by Chromium, and only over HTTPS. Asked
+  // once, shared by every button on the page; null means "no idea".
+  var archAsked = null;
+
+  function archHint() {
+    if (archAsked) return archAsked;
+    var uad = navigator.userAgentData;
+    archAsked =
+      uad && uad.getHighEntropyValues
+        ? uad
+            .getHighEntropyValues(["architecture"])
+            .then(function (v) { return (v && v.architecture) || null; })
+            .catch(function () { return null; })
+        : Promise.resolve(null);
+    return archAsked;
+  }
+
+  // Choose the build for an OS we recognise. Where the browser will not say
+  // which CPU it is on, take the current one — Apple silicon on macOS, 64-bit
+  // elsewhere — and let the button say so, since the menu is one click away.
+  function pickBuild(list, os, arch) {
+    if (!list || !list.length) return null;
+    if (list.length === 1) return list[0];
+
+    var isArm = function (a) { return a.arch === "Apple silicon" || a.arch === "ARM64"; };
+    var isWide = function (a) { return a.arch === "Intel" || a.arch === "64-bit"; };
+    var wantArm = arch ? /^arm|aarch/i.test(arch) : os === "macOS";
+    var preferred = (wantArm ? list.filter(isArm) : list.filter(isWide))[0];
+
+    return preferred || list.filter(isArm)[0] || list.filter(isWide)[0] || list[0];
+  }
+
+  function resolveBuild(release) {
+    var mine = detectOS();
+    var buckets = bucketAssets(release);
+    if (!mine || !buckets[mine]) return Promise.resolve(null);
+    return archHint().then(function (arch) {
+      var build = pickBuild(buckets[mine], mine, arch);
+      return build ? { os: mine, build: build } : null;
+    });
+  }
+
+  // Name the version on the button, then re-aim it at the visitor's build.
+  function updateDownloadButton(wrap, release) {
+    var main = wrap.querySelector("[data-dl-main]");
+    if (!main) return;
+
+    var tag = release.tag_name || "";
+    var label = main.querySelector("[data-dl-label]");
+    if (label && tag) {
+      label.textContent =
+        (wrap.getAttribute("data-dl-word") || "Download") + " " + (/^v/i.test(tag) ? tag : "v" + tag);
+    }
+
+    resolveBuild(release).then(function (hit) {
+      var sub = main.querySelector("[data-dl-sub]");
+
+      // Nothing in this release fits the visitor — an OS we have no build for,
+      // or one we could not identify. The button keeps the release page as its
+      // target and says so, rather than implying it knows what it is handing over.
+      if (!hit) {
+        if (sub) sub.textContent = wrap.getAttribute("data-dl-nomatch") || "";
+        return;
+      }
+
+      main.href = hit.build.url;
+      if (sub) {
+        sub.textContent =
+          (hit.build.arch ? hit.os + " · " + hit.build.arch : hit.os) +
+          (hit.build.size ? " · " + hit.build.size : "");
+      }
+    });
+  }
+
+  // The compact header button is the same action, without room to explain it.
+  function updateQuickButton(el, release) {
+    resolveBuild(release).then(function (hit) {
+      if (hit) el.href = hit.build.url;
+    });
+  }
+
+  function fillDownloadMenu(wrap, release) {
+    var list = wrap.querySelector("[data-download-list]");
+    if (!list || !release.assets || !release.assets.length) return;
+
+    var buckets = bucketAssets(release);
 
     var present = OS_ORDER.filter(function (os) { return buckets[os]; });
     if (!present.length) return;
@@ -527,6 +577,69 @@
       '<li><a href="' + (release.html_url || "#") + '" rel="noopener"><span>See all files for this release</span></a></li>';
     list.innerHTML = html;
   }
+
+  /* --- release info ----------------------------------------------------- */
+
+  // Must come after the download helpers above: applying the seed calls them
+  // synchronously, so anything they read has to be assigned by now.
+  // Collect every element that needs release info, grouped by repository so a
+  // page with several references to one repo still makes a single request.
+  var byRepo = {};
+  document.querySelectorAll("[data-repo]").forEach(function (el) {
+    var repo = el.getAttribute("data-repo");
+    if (!repo) return;
+    (byRepo[repo] = byRepo[repo] || []).push(el);
+  });
+
+  function applyRelease(els, release) {
+    var tag = release.tag_name || "";
+    var when = release.published_at ? dateFmt.format(new Date(release.published_at)) : "";
+
+    els.forEach(function (el) {
+      if (el.hasAttribute("data-download")) {
+        fillDownloadMenu(el, release);
+        updateDownloadButton(el, release);
+      } else if (el.hasAttribute("data-dl-quick")) {
+        updateQuickButton(el, release);
+      } else if (el.hasAttribute("data-release-version")) {
+        el.textContent = tag || "—";
+        var dateCell = document.querySelector("[data-release-date]");
+        if (dateCell && when) dateCell.textContent = when;
+      } else if (el.hasAttribute("data-release") || el.hasAttribute("data-release-line")) {
+        var parts = [];
+        if (tag) parts.push("Latest release " + tag);
+        if (when) parts.push(when);
+        el.textContent = parts.join(" · ");
+      }
+    });
+  }
+
+  // The release the page was built with, embedded by the generator. Applying
+  // it first means the version and the visitor's own build are already right
+  // before any request is made — and stay right if that request never lands.
+  function readSeed() {
+    var el = document.querySelector("[data-release-seed]");
+    if (!el) return null;
+    try {
+      return JSON.parse(el.textContent);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  var seed = readSeed();
+
+  Object.keys(byRepo).forEach(function (repo) {
+    if (seed) applyRelease(byRepo[repo], seed);
+
+    // Then confirm against the live release, in case one was cut since the
+    // build. Failure is expected and harmless: the snapshot already showed.
+    fetchRelease(repo)
+      .then(function (release) {
+        applyRelease(byRepo[repo], release);
+      })
+      .catch(function () {});
+  });
 
   /* --- copy citation ---------------------------------------------------- */
 

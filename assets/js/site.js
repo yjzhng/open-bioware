@@ -27,10 +27,13 @@
 
   /* --- live release metadata -------------------------------------------- */
 
+  // UTC, to match what the generator rendered into the page: a release
+  // published near midnight UTC otherwise flips a day when this reformats it.
   var dateFmt = new Intl.DateTimeFormat(undefined, {
     year: "numeric",
     month: "short",
     day: "numeric",
+    timeZone: "UTC",
   });
 
   function fetchRelease(repo) {

@@ -360,15 +360,23 @@ export const releaseVersion = (release) => {
   return tag ? (/^v/i.test(tag) ? tag : "v" + tag) : "";
 };
 
-/** Fixed locale: the build must be deterministic. site.js re-renders this in
- *  the visitor's own locale once it runs. */
+/** Fixed locale *and* zone: the build must be deterministic, and a release
+ *  published late in the UTC day otherwise renders as the next day on a
+ *  machine east of UTC — so the generated HTML would depend on where it was
+ *  built. site.js formats the same instant in UTC too, so the value it
+ *  substitutes agrees with what was rendered here. */
 const releaseDate = (release) => {
   const when = (release && release.published_at) || "";
   if (!when) return "";
   const d = new Date(when);
   return Number.isNaN(d.valueOf())
     ? ""
-    : d.toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "numeric" });
+    : d.toLocaleDateString("en-GB", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        timeZone: "UTC",
+      });
 };
 
 /** True when the newest GitHub release supplies the actual download. */

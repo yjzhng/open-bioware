@@ -54,6 +54,16 @@ const trim = (release) => ({
 
 async function main() {
   const apps = JSON.parse(await readFile(join(root, "data/apps.json"), "utf8"));
+
+  // Start from what is already committed. A fetch that fails — a rate limit, a
+  // blip, an app whose release was deleted — then leaves that app's entry as it
+  // was, instead of silently dropping the version from its page.
+  let previous = {};
+  try {
+    previous = JSON.parse(await readFile(join(root, "data/releases.json"), "utf8"));
+  } catch {
+    // No snapshot yet; the first run writes one.
+  }
   const auth = await token();
   const headers = {
     Accept: "application/vnd.github+json",
@@ -62,8 +72,9 @@ async function main() {
   };
   console.log(auth ? "Authenticated request." : "Anonymous request (60/hour).");
 
-  const out = {};
+  const out = { ...previous };
   let failed = 0;
+  let fetched = 0;
 
   for (const app of apps) {
     const type = app.download?.type ?? "github";
@@ -74,15 +85,24 @@ async function main() {
       const res = await fetch(url, { headers, signal: AbortSignal.timeout(15000) });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const release = trim(await res.json());
+      const before = previous[app.slug];
       out[app.slug] = release;
-      console.log(`  ${app.name} → ${release.tag_name} (${release.assets.length} assets)`);
+      fetched += 1;
+      const change =
+        before && before.tag_name !== release.tag_name ? ` (was ${before.tag_name})` : "";
+      console.log(`  ${app.name} → ${release.tag_name}${change} (${release.assets.length} assets)`);
     } catch (err) {
       failed += 1;
-      console.error(`  ${app.name} → failed: ${err.message}`);
+      const kept = previous[app.slug];
+      console.error(
+        `  ${app.name} → failed: ${err.message}` +
+          (kept ? ` — keeping ${kept.tag_name}` : " — no previous entry to keep")
+      );
     }
   }
 
-  if (!Object.keys(out).length) {
+  // Nothing new to trust: leave the committed snapshot exactly as it is.
+  if (!fetched) {
     console.error("\nNothing fetched; leaving data/releases.json untouched.");
     process.exitCode = 1;
     return;
@@ -91,8 +111,13 @@ async function main() {
   // Sorted keys so an unchanged snapshot produces a byte-identical file.
   const sorted = Object.fromEntries(Object.keys(out).sort().map((k) => [k, out[k]]));
   await writeFile(join(root, "data/releases.json"), JSON.stringify(sorted, null, 2) + "\n", "utf8");
-  console.log(`\nWrote data/releases.json (${Object.keys(sorted).length} apps${failed ? `, ${failed} failed` : ""}).`);
-  if (failed) process.exitCode = 1;
+  console.log(
+    `\nWrote data/releases.json (${Object.keys(sorted).length} apps: ` +
+      `${fetched} refreshed${failed ? `, ${failed} kept from the previous snapshot` : ""}).`
+  );
+  // A partial failure is survivable, because those entries were preserved, so
+  // this still succeeds: an unattended run should not stop over one blip.
+
 }
 
 main().catch((err) => {

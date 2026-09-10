@@ -1,0 +1,69 @@
+name: Refresh releases
+
+# The site is generated from a committed snapshot of each app's newest release
+# (data/releases.json), so a visitor sees the version and the build for their
+# platform without the page having to call the GitHub API — that call is
+# anonymous, capped at 60/hour per address, and absent entirely with JavaScript
+# off. This job keeps that snapshot in step with the apps' actual releases.
+#
+# The build itself never fetches: identical inputs must give identical output,
+# or the staleness check in build.yml cannot tell stale HTML from a release cut
+# since the last build.
+
+on:
+  schedule:
+    - cron: "17 5 * * *" # daily, off the hour to avoid the scheduling crush
+  workflow_dispatch: # and on demand, right after publishing a release
+
+permissions:
+  contents: write
+  pages: write
+
+# Never let two refreshes race for the same push.
+concurrency:
+  group: refresh-releases
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # Reads the apps' public releases. Fails only if nothing at all could be
+      # fetched; a single app failing keeps its previous entry.
+      - name: Refresh the release snapshot
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/fetch-releases.mjs
+
+      - name: Regenerate the site
+        run: node build.mjs
+
+      - name: Commit if a release changed
+        id: commit
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No release changes."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git --no-pager diff --stat
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Refresh release snapshot"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      # A push made with GITHUB_TOKEN deliberately does not start another
+      # workflow run, which includes the Pages deployment — so ask for one.
+      - name: Ask Pages to publish the new commit
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds"

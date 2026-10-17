@@ -51,24 +51,24 @@
     ]
   },
   "omicexplorer": {
-    "tag_name": "v0.3.6",
-    "published_at": "2026-10-15T00:05:36Z",
-    "html_url": "https://github.com/yjzhng/OmicExplorer/releases/tag/v0.3.6",
+    "tag_name": "v0.3.7",
+    "published_at": "2026-10-16T19:29:51Z",
+    "html_url": "https://github.com/yjzhng/OmicExplorer/releases/tag/v0.3.7",
     "assets": [
       {
-        "name": "OmicExplorer-0.3.6-arm64.dmg",
-        "browser_download_url": "https://github.com/yjzhng/OmicExplorer/releases/download/v0.3.6/OmicExplorer-0.3.6-arm64.dmg",
-        "size": 102975747
+        "name": "OmicExplorer-0.3.7-arm64.dmg",
+        "browser_download_url": "https://github.com/yjzhng/OmicExplorer/releases/download/v0.3.7/OmicExplorer-0.3.7-arm64.dmg",
+        "size": 103000803
       },
       {
-        "name": "OmicExplorer-0.3.6-x64.dmg",
-        "browser_download_url": "https://github.com/yjzhng/OmicExplorer/releases/download/v0.3.6/OmicExplorer-0.3.6-x64.dmg",
-        "size": 110177854
+        "name": "OmicExplorer-0.3.7-x64.dmg",
+        "browser_download_url": "https://github.com/yjzhng/OmicExplorer/releases/download/v0.3.7/OmicExplorer-0.3.7-x64.dmg",
+        "size": 110196083
       },
       {
-        "name": "OmicExplorer-0.3.6-x64.exe",
-        "browser_download_url": "https://github.com/yjzhng/OmicExplorer/releases/download/v0.3.6/OmicExplorer-0.3.6-x64.exe",
-        "size": 86362138
+        "name": "OmicExplorer-0.3.7-x64.exe",
+        "browser_download_url": "https://github.com/yjzhng/OmicExplorer/releases/download/v0.3.7/OmicExplorer-0.3.7-x64.exe",
+        "size": 86385114
       }
     ]
   },

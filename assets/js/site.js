@@ -279,14 +279,14 @@
 
   /* --- back link resumes the page you came from ------------------------- */
 
-  // Arriving from the home page or the app catalogue, "← Open Bioware" should
+  // Arriving from the home page or the app catalogue, the header's site link should
   // hand you back to where you were reading, not dump you at the top. Going
   // through history lets the browser restore the scroll position (and, via
   // bfcache, the rest of that page's state). Landing directly on an app page —
   // from a search result or a shared link — falls through to the plain href.
   // The site may be served from a subpath, so compare against the base that the
-  // back link itself carries rather than assuming the domain root.
-  var backLink = document.querySelector(".back-link");
+  // link itself carries rather than assuming the domain root.
+  var backLink = document.querySelector("[data-site-home]");
   var base = backLink
     ? (backLink.getAttribute("href") || "/").replace(/\/$/, "")
     : "";
@@ -582,6 +582,20 @@
   }
 
   /* --- release info ----------------------------------------------------- */
+
+  // First-launch tips: show only the visitor's own OS. If we cannot tell, or
+  // there is no group for it, every group stays visible.
+  document.querySelectorAll("[data-launch-tips]").forEach(function (box) {
+    var groups = box.querySelectorAll("[data-launch-os]");
+    var mine = detectOS();
+    var match = Array.prototype.some.call(groups, function (g) {
+      return g.getAttribute("data-launch-os") === mine;
+    });
+    if (!match) return;
+    groups.forEach(function (g) {
+      g.hidden = g.getAttribute("data-launch-os") !== mine;
+    });
+  });
 
   // Must come after the download helpers above: applying the seed calls them
   // synchronously, so anything they read has to be assigned by now.

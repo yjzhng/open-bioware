@@ -16,44 +16,43 @@
   },
   "home": {
     "heroTitle": "The open-source bioscience software collection",
-    "heroLede": "A personal collection of free desktop apps for biologists",
+    "heroLede": "Free, open-source desktop apps for biologists.",
     "appsHeading": "Currently available applications",
-    "appsHeadingOne": "The application we build",
-    "appsLede": "Select an app to see how it may help your research",
+    "appsHeadingOne": "Available application",
+    "appsLede": "Select an app to see what it does.",
     "appsMore": "View all {count} applications",
-    "directoryHeading": "Other free academic softwares",
-    "directoryLede": "Powerful open-source tools from the academic community. A collection of my personal favourites.",
+    "directoryHeading": "Other free software for research",
+    "directoryLede": "Free tools from the research community that I use and recommend.",
     "directoryLink": "See the full directory",
-    "ctaHeading": "Help make open source better",
-    "ctaBody": "Open-source softwares are passion-driven and are best supported by users (you). Help by providing feedback, reporting bugs and requesting for features.",
+    "ctaHeading": "Help improve these apps",
+    "ctaBody": "Open-source software depends on its users. Send feedback, report bugs or request features.",
     "ctaButton": "Contribute on GitHub"
   },
   "apps": {
     "title": "Currently available applications",
-    "titleOne": "Currently available application",
+    "titleOne": "Available application",
     "metaTitle": "Currently available applications",
-    "metaDescription": "{count} free, open-source desktop applications I built.",
-    "lede": "{count} free, open-source desktop applications I built.",
-    "ledeOne": "{count} free, open-source desktop applications I built.",
+    "metaDescription": "{count} free, open-source desktop apps.",
+    "lede": "{count} free, open-source desktop apps.",
+    "ledeOne": "{count} free, open-source desktop app.",
     "searchLabel": "Search applications",
     "searchPlaceholder": "Search {count} applications…",
     "filterAll": "All",
     "empty": "No applications match that search."
   },
   "directory": {
-    "title": "Other free academic softwares",
-    "lede": "Powerful open-source tools from the academic community. A collection of my personal favourites.",
-    "metaDescription": "{count} free tools for academic research — desktop and browser-based, nearly all open source.",
+    "title": "Other free software for research",
+    "lede": "Free tools from the research community that I use and recommend.",
+    "metaDescription": "{count} free research tools for desktop or browser. Most are open source.",
     "searchLabel": "Search software",
     "searchPlaceholder": "Search {count} applications…",
     "filterAll": "All",
     "empty": "No applications match that search.",
-    "calloutStrong": "Know something that belongs here?",
-    "calloutText": "If you know a free desktop app that you find hugely useful",
+    "calloutStrong": "Know a tool that belongs here?",
+    "calloutText": "Tell me about free software you find useful.",
     "calloutLink": "Suggest it on GitHub"
   },
   "app": {
-    "backTo": "{site}",
     "navOverview": "Overview",
     "navFeatures": "Features",
     "navSpecifications": "Specifications",
@@ -66,7 +65,10 @@
     "downloadShort": "Download",
     "downloadMenuTitle": "Choose a build",
     "downloadMenuAll": "See all files for this release",
-    "downloadNoMatch": "Cannot find matched build for the platform. Check source",
+    "downloadNoMatch": "No build found for your system. See all files.",
+    "launchTipsTitle": "Blocked the first time you open it?",
+    "launchTipsCode": "Or run this in Terminal:",
+    "launchTipsMore": "Read more on GitHub",
     "sourceCode": "Source code",
     "versionHistory": "Version history",
     "reportIssue": "Report an issue",
@@ -97,11 +99,11 @@
   },
   "about": {
     "title": "About {site}",
-    "metaDescription": "About {site} — open-source desktop software for life sciences.",
+    "metaDescription": "About {site}: free, open-source desktop software for biologists.",
     "blocks": [
       {
         "type": "p",
-        "text": "{site} hosts a collection of free, open-source desktop software developed for biological research"
+        "text": "{site} is a collection of free, open-source desktop apps for biological research."
       },
       {
         "type": "h2",
@@ -109,7 +111,7 @@
       },
       {
         "type": "p",
-        "text": "I believe in the collaborative scientific spirit. Good tools save time for scientists. By making such tools open and accessible instead of locking them behind commerical licenses, we can benefit from each other's work and accelerate research together."
+        "text": "Good tools save scientists time. When tools are open and free, rather than behind commercial licences, we can all build on each other's work."
       },
       {
         "type": "h2",
@@ -119,40 +121,40 @@
         "type": "ticks",
         "items": [
           {
-            "strong": "Our applications.",
-            "text": "Each gets its own site with an overview, requirements, installation steps and a download that always points at the current release."
+            "strong": "My apps.",
+            "text": "Each has its own page with an overview, requirements and a download link to the latest release."
           },
           {
-            "strong": "A short list of {total} other tools.",
-            "text": "Software from other groups that we use ourselves, pointing you to each project's own website and, where there is one, its source repository."
+            "strong": "{total} other tools.",
+            "text": "Software from other groups that I use, with links to each project's website and source code."
           }
         ]
       },
       {
         "type": "h2",
-        "text": "How the list is chosen"
+        "text": "How tools are chosen"
       },
       {
         "type": "p",
-        "text": "This is a short, opinionated list rather than an exhaustive index. A tool earns a place only if:"
+        "text": "This is a short, personal list, not a full index. A tool is listed only if:"
       },
       {
         "type": "steps",
         "items": [
-          "We use it ourselves in real work.",
-          "It is free to obtain, without registration or a licence request.",
+          "I use it in my own work.",
+          "It is free, with no registration or licence request.",
           "It is actively maintained.",
-          "It has a graphical interface that is easy to use — desktop or browser.",
-          "It runs locally on your computer without internet dependencies"
+          "It has an easy-to-use graphical interface, on desktop or in the browser.",
+          "It runs on your computer without needing the internet."
         ]
       },
       {
         "type": "p",
-        "text": "Most of these are open source, which is what we prefer and what we build. A few are free to use without being open source — UCSF ChimeraX is free for academic use, Obsidian is free for personal use, and Visual Studio Code's source is MIT while Microsoft's own builds carry their licence. We list those anyway because they earn their place, and the licence badge on each entry says exactly what you are getting rather than glossing over it."
+        "text": "Most are open source. A few are free but not open source: UCSF ChimeraX is free for academic use, Obsidian is free for personal use, and Visual Studio Code's source is MIT-licensed but Microsoft's builds have their own licence. Each entry's licence badge shows exactly what you get."
       },
       {
         "type": "p",
-        "text": "We are not affiliated with any of these projects, and listing is not endorsement by them of us. We deliberately do not host or link to installers: each entry sends you to the project's own site, so you always download from the maintainers themselves and see their current instructions. Names and trademarks belong to their respective owners."
+        "text": "I am not affiliated with these projects. Links go to each project's own website, so you always download from the developers. Names and trademarks belong to their owners."
       },
       {
         "type": "h2",
@@ -160,7 +162,7 @@
       },
       {
         "type": "p",
-        "text": "The whole site is a public repository. If a link has rotted, a description is wrong, or a tool deserves a place in the directory, open an issue or send a pull request."
+        "text": "This site is a public repository. To report a broken link or a wrong description, or to suggest a tool, open an issue or send a pull request."
       },
       {
         "type": "actions",

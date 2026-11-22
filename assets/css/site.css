@@ -5,6 +5,17 @@
 
 /* --- Tokens ------------------------------------------------------------- */
 
+/* Wordmark typeface: IBM Plex Sans (SIL Open Font License, see
+   assets/fonts/OFL.txt). Used only for the site name. */
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("../fonts/ibm-plex-sans-latin.woff2") format("woff2");
+  font-weight: 100 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root {
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto,
     "Helvetica Neue", Arial, sans-serif;
@@ -303,7 +314,24 @@ code, kbd, pre {
   white-space: nowrap;
 }
 .brand:hover { color: var(--text); }
-.brand__mark { flex: none; color: var(--accent); }
+
+/* The "OB" mark, coloured from the theme so it matches the wordmark. */
+.logo-mark { flex: none; }
+.logo-mark rect { fill: var(--bg); stroke: var(--border); }
+.logo-mark__o { fill: var(--text); }
+.logo-mark__b { fill: var(--text-3); }
+
+/* "OpenBioware": one word, the second half a shade lighter. */
+.wordmark {
+  font-family: "IBM Plex Sans", var(--font-sans);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  white-space: nowrap;
+}
+.wordmark__2 { font-weight: 400; color: var(--text-3); }
+.wordmark-link { display: inline-block; font-size: 1.15rem; }
+.wordmark-link:hover .wordmark__2 { color: var(--text-2); }
 
 .site-nav {
   grid-column: 2;
@@ -314,6 +342,18 @@ code, kbd, pre {
 }
 
 .app-header .site-nav { margin-left: auto; gap: 0.15rem; }
+
+/* App pages: the site wordmark sits at the far right of the header,
+   after the app's own actions, linking back to the site. */
+.app-header__site {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.6rem;
+  font-size: 0.98rem;
+  white-space: nowrap;
+}
+.app-header__site:hover .wordmark__2 { color: var(--text-2); }
+.app-header__mark { display: none; }
 
 .nav-list {
   display: flex;
@@ -392,7 +432,10 @@ code, kbd, pre {
   .site-header__inner { gap: 0.5rem; }
   .site-nav { gap: 0.1rem; }
   .site-nav a { padding: 0.4rem 0.45rem; font-size: 0.82rem; }
-  .brand span { display: none; }
+  /* Keep the app's icon; drop only its name. */
+  .site-header .brand > span:not(.tile) { display: none; }
+  .app-header__site .wordmark { display: none; }
+  .app-header__mark { display: block; }
 }
 
 /* Smallest phones (~320px): the nav, brand and action buttons together no
@@ -825,6 +868,79 @@ code, kbd, pre {
 
 .release-meta [data-release-version] { font-family: var(--font-mono); }
 
+/* First-launch help for unsigned builds, under the download button. */
+.launch-tips {
+  margin-top: 1.1rem;
+  max-width: 46rem;
+  padding: 1rem 1.15rem;
+  font-size: 0.86rem;
+  color: var(--text-2);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-line);
+  border-radius: var(--radius);
+}
+
+.launch-tips__title {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  list-style: none;
+  font-weight: 570;
+  color: var(--text);
+}
+.launch-tips__title::-webkit-details-marker { display: none; }
+.launch-tips__title svg { flex: none; color: var(--accent); }
+.launch-tips__title .caret {
+  display: inline-block;
+  margin-left: auto;
+  color: var(--text-3);
+  transition: transform 0.15s var(--ease);
+}
+.launch-tips[open] > .launch-tips__title { margin-bottom: 0.4rem; }
+.launch-tips[open] > .launch-tips__title .caret { transform: rotate(180deg); }
+
+.launch-tips__intro { margin-bottom: 0.85rem; }
+.launch-tips__group[hidden] { display: none; }
+
+.launch-tips__grid {
+  display: grid;
+  gap: 1rem 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+}
+
+.launch-tips h3 {
+  margin-bottom: 0.4rem;
+  font-size: 0.88rem;
+  color: var(--text);
+}
+
+.launch-tips ul {
+  display: grid;
+  gap: 0.4rem;
+  padding-left: 1.1rem;
+}
+.launch-tips li strong { color: var(--text); font-weight: 570; }
+
+.launch-tips__code-label { margin-top: 0.6rem; color: var(--text-3); }
+
+.launch-tips code {
+  display: block;
+  margin-top: 0.3rem;
+  padding: 0.4rem 0.55rem;
+  overflow-x: auto;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.launch-tips__more { margin-top: 0.9rem; }
+.launch-tips__more a { display: inline-flex; align-items: center; gap: 0.3rem; }
+
 .app-layout {
   padding-block: clamp(2.5rem, 5vw, 4rem);
   max-width: 54rem;
@@ -1141,7 +1257,7 @@ code, kbd, pre {
 .site-footer a:hover { color: var(--accent); }
 
 .site-footer__about { max-width: 34ch; color: var(--text-3); }
-.site-footer__about .brand { margin-bottom: 0.75rem; }
+.site-footer .wordmark-link { margin-bottom: 0.75rem; }
 
 .site-footer__bar {
   display: flex;
@@ -1234,6 +1350,7 @@ code, kbd, pre {
 
 @media (max-width: 52rem) {
   .app-header .site-nav { display: none; }
+  .app-header .header-actions { margin-left: auto; }
 }
 
 .btn--sm {
@@ -1318,6 +1435,17 @@ code, kbd, pre {
 .app-footer a { color: var(--text-2); }
 .app-footer a:hover { color: var(--accent); }
 .app-footer__about { max-width: 34ch; color: var(--text-3); margin-top: 0.75rem; }
+
+.app-footer .app-footer__parent {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-top: 1.1rem;
+  font-size: 0.84rem;
+  color: var(--text-3);
+}
+.app-footer__parent .wordmark { font-size: 1rem; }
+.app-footer .app-footer__parent:hover .wordmark__2 { color: var(--text-2); }
 
 .app-footer__bar {
   display: flex;
@@ -1567,6 +1695,17 @@ code, kbd, pre {
   margin-inline: auto;
 }
 
+/* Full logo (icon + wordmark) above the home page title. */
+.hero__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.75rem;
+  font-size: clamp(1.9rem, 1.5rem + 1.6vw, 2.6rem);
+  line-height: 1;
+}
+.hero__logo .logo-mark { width: 1.6em; height: 1.6em; }
+
 .hero--center .hero__lede {
   margin-inline: auto;
   margin-top: 1.5rem;
@@ -1727,20 +1866,9 @@ code, kbd, pre {
 }
 
 /* ==========================================================================
-   App page: back link and split download button
+   App page: split download button
    ========================================================================== */
 
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-bottom: 1.5rem;
-  color: var(--text-3);
-  font-size: 0.83rem;
-  font-weight: 500;
-}
-
-.back-link:hover { color: var(--accent); }
 
 .dl { position: relative; display: inline-flex; }
 

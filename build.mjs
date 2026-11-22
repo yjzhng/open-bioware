@@ -139,8 +139,8 @@ async function main() {
   // Everything internal is emitted through this prefix; empty means domain root.
   setBasePath(site.basePath || "");
 
-  // Content-hash the stylesheet and script so a deploy cannot leave visitors
-  // on a cached copy of either. Unchanged files keep their hash, and stay
+  // Content-hash the stylesheet, script and favicon so a deploy cannot leave
+  // visitors on a cached copy of any of them. Unchanged files keep their hash, and stay
   // cached; changed ones get a new URL and are fetched immediately.
   const hashOf = async (relPath) =>
     createHash("sha256").update(await readFile(join(root, relPath))).digest("hex").slice(0, 10);
@@ -148,6 +148,7 @@ async function main() {
   site.assets = {
     css: await hashOf("assets/css/site.css"),
     js: await hashOf("assets/js/site.js"),
+    icon: await hashOf("assets/img/favicon.svg"),
   };
 
   const problems = validate(apps, directory);
@@ -215,7 +216,7 @@ ${routes
       (seeded.length < apps.length ? " — run node scripts/fetch-releases.mjs to refresh" : "")
   );
 
-  console.log(`\n  Asset versions: css ${site.assets.css} · js ${site.assets.js}`);
+  console.log(`\n  Asset versions: css ${site.assets.css} · js ${site.assets.js} · icon ${site.assets.icon}`);
   console.log(`\n  Primary download targets:`);
   for (const app of apps) console.log(`    ${app.name} → ${downloadUrl(app)}`);
 }

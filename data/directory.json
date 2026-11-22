@@ -4,7 +4,7 @@
     "items": [
       {
         "name": "Fiji (ImageJ)",
-        "blurb": "The reference image-analysis platform for biology — ImageJ bundled with hundreds of curated plugins for segmentation, registration, tracking and stitching.",
+        "blurb": "ImageJ with hundreds of plugins for image analysis, including segmentation, registration, tracking and stitching.",
         "platforms": [
           "macOS",
           "Windows",
@@ -22,7 +22,7 @@
     "items": [
       {
         "name": "PyMOL (Open Source)",
-        "blurb": "The molecular graphics system behind a large share of published structure figures, in its community-maintained open-source build.",
+        "blurb": "View molecular structures and make figures. The community-maintained open-source build.",
         "platforms": [
           "macOS",
           "Windows",
@@ -35,7 +35,7 @@
       },
       {
         "name": "UCSF ChimeraX",
-        "blurb": "Molecular visualisation built for large structures, cryo-EM maps and publication-quality renders, from the team behind Chimera.",
+        "blurb": "View large structures and cryo-EM maps, and make high-quality images.",
         "platforms": [
           "macOS",
           "Windows",
@@ -48,7 +48,7 @@
       },
       {
         "name": "Ketcher",
-        "blurb": "Browser-based chemical structure sketcher for drawing molecules and reactions, with SMILES and MOL import and export.",
+        "blurb": "Draw molecules and reactions in the browser. Imports and exports SMILES and MOL.",
         "platforms": [
           "Web"
         ],
@@ -58,7 +58,7 @@
       },
       {
         "name": "pLannotate",
-        "blurb": "Annotates engineered plasmids automatically — paste a sequence and get back labelled features, ready to check or export.",
+        "blurb": "Paste a plasmid sequence and get its features annotated automatically.",
         "platforms": [
           "Web",
           "macOS",
@@ -77,7 +77,7 @@
     "items": [
       {
         "name": "Cytoscape",
-        "blurb": "The standard desktop platform for building, styling and analysing biological networks, extended by a large app store.",
+        "blurb": "Build, style and analyse biological networks. Add features with apps.",
         "platforms": [
           "macOS",
           "Windows",
@@ -90,7 +90,7 @@
       },
       {
         "name": "RStudio Desktop",
-        "blurb": "The open-source IDE for R — the working environment for most Bioconductor and tidyverse analysis.",
+        "blurb": "Desktop editor for R, widely used with Bioconductor and the tidyverse.",
         "platforms": [
           "macOS",
           "Windows",
@@ -103,7 +103,7 @@
       },
       {
         "name": "SuperPlotsOfData",
-        "blurb": "Turns replicate-level data into SuperPlots in the browser, showing every point and the independent experiments behind the summary statistics.",
+        "blurb": "Make SuperPlots in the browser, showing every data point and each independent replicate.",
         "platforms": [
           "Web"
         ],
@@ -113,7 +113,7 @@
       },
       {
         "name": "Visual Studio Code",
-        "blurb": "General-purpose editor that has become the default for analysis scripts and notebooks, with first-class Python and R support.",
+        "blurb": "Code editor for scripts and notebooks, with strong Python and R support.",
         "platforms": [
           "macOS",
           "Windows",
@@ -131,7 +131,7 @@
     "items": [
       {
         "name": "Zotero",
-        "blurb": "Reference manager that collects papers from the browser, syncs a library and inserts citations into Word, LibreOffice and Google Docs.",
+        "blurb": "Save papers from the browser, organise your library and add citations in Word, LibreOffice and Google Docs.",
         "platforms": [
           "macOS",
           "Windows",
@@ -144,7 +144,7 @@
       },
       {
         "name": "Obsidian",
-        "blurb": "Plain-text notes stored as local Markdown files, with backlinks and graph views — a lab notebook you keep, in a format that outlives the app.",
+        "blurb": "Notes stored as Markdown files on your computer, with links between notes and a graph view.",
         "platforms": [
           "macOS",
           "Windows",

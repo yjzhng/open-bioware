@@ -35,10 +35,12 @@ To publish an application you only ever edit `data/apps.json`, then rebuild.
 | `platforms` | yes | Array, e.g. `["macOS", "Windows", "Linux"]`. |
 | `homepage`, `docs` | no | Extra links in the app's footer. Omit or leave `""` to hide. |
 | `language` | no | Named in the app footer ("Built with Python"). |
+| `metaTitle`, `metaDescription` | no | The page title and description shown in search results. Default to "name — tagline" and the tagline. Keep the title under ~60 characters and the description under ~155. |
 | `summary` | no | Array of paragraphs for the Overview section. |
 | `highlights` | no | Array of `{ title, body }` — rendered as the feature grid. |
 | `requirements` | no | See [Requirements](#requirements) — rendered as Specifications rows. |
 | `citation` | no | `{ text, url }`. Adds a "How to cite" block with a copy button. |
+| `launchTips` | no | `{ intro, groups: [{ os, steps: [{ when, text }], code }], moreUrl }`. A "blocked on first launch" help box under the download button, for unsigned builds. Shows only the visitor's OS (all groups if unknown). `moreUrl` defaults to the latest GitHub release. |
 | `icon` | no | Path to the app's icon in [`assets/img/apps/`](assets/img/apps/); falls back to a monogram tile. |
 | `accent` | no | The app's colour: `teal` (default), `indigo`, `violet`, `rose`, `amber`, `emerald`. |
 | `tags` | no | Extra keywords matched by the search box, not displayed. |
@@ -301,7 +303,7 @@ leave them alone and the hash is unchanged, so the browser keeps its cache.
 data/          site.json, apps.json, directory.json  ← the only files you edit
 src/render.mjs HTML templates
 build.mjs      generator
-assets/        css, js, favicon (hand-written, not generated)
+assets/        css, js, favicon, and the wordmark font (IBM Plex Sans, OFL; self-hosted)
 
 index.html     ┐
 apps/          │
